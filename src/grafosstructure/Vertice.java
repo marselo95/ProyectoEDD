@@ -22,6 +22,7 @@ public class Vertice {
         return getName().equals(n.getName());
     }
     
+    @Override
     public String toString(){
         return this.getName() + " (" + this.getNumVertice() + ")";
     }
@@ -69,5 +70,3 @@ public class Vertice {
     }
 
 }
-
-

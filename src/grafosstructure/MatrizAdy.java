@@ -54,7 +54,7 @@ public class MatrizAdy {
         va  = numVertice(a);
         vb = numVertice(b);
         if (va  < 0 || vb < 0) {
-            System.out.println("ElVertice no existe");
+            System.out.println("El Vertice no existe");
         } else {
             this.matAd[va][vb] = peso;
         }
@@ -90,9 +90,10 @@ public class MatrizAdy {
                 Integer cw;
                 cw = cola.delete();
                 w = cw;
-                System.out.println("Vertice " + mat.verts[w] + " Visitado");
+                System.out.println("Almacen " + mat.verts[w] + " Visitado");
 //            var a = mat.verts[w].getData().print();
                 mat.verts[w].getData().print();
+//            System.out.println(mat.verts[w].getName());
 //            System.out.println(a);
                 for (int u = 0; u < mat.getNumVerts(); u++) {
                     if ((mat.matAd[w][u] != 0) && (m[u] == clave)) {
