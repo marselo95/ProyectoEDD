@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileReader;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.implementations.SingleGraph;
 
 public class Funciones {
 
@@ -59,7 +61,7 @@ public class Funciones {
         try {
             if (!"".equals(txt) && !txt.isEmpty()) {
                 String[] txtSplit = txt.split("Rutas;");
-                // rutas
+                // rutas    
 //                    System.out.println(txtSplit[1]);
 
                 for (int i = 0; i < txtSplit.length; i++) {
@@ -107,5 +109,31 @@ public class Funciones {
             return a;
         }
     }
+    
+    
+    public Graph Graphic(MatrizAdy matriz){
+        String styleSheet = "node { stroke-mode: plain; fill-color: purple;shape: circle;size-mode: fit;text-size:22.5; padding: 8px, 12px;}edge {padding: 8px, 12px; arrow-shape: arrow; text-size:18; arrow-size: 6px, 6px;}";
+
+        Graph graph = new SingleGraph("Grafo", false,true);
+        graph.setAttribute("ui.stylesheet", styleSheet);
+        for (int i = 0; i < matriz.getNumVerts(); i++) {
+            graph.addNode(matriz.verts[i].getName()).setAttribute("ui.label", "Almacen " + matriz.verts[i].getName());
+            graph.getNode(i).setAttribute("ui.style", "text-alignment:left;");
+        }
+        int aux = 0;
+        for (int i = 0; i < matriz.getMatAd().length; i++) {
+            for (int j = 0; j < matriz.getMatAd()[i].length; j++) {
+                if (matriz.getMatAd()[i][j] != 0) {
+                    graph.addEdge(matriz.verts[i].getName() + matriz.verts[j].getName(), graph.getNode(i), graph.getNode(j), true);
+                    graph.getEdge(aux).setAttribute("ui.label", Integer.toString(matriz.getMatAd()[i][j]));
+                    graph.getEdge(aux).setAttribute("ui.style", "text-alignment:center;");
+                    aux++;
+                }
+            }
+
+        }
+        return graph;
+    }
+    
 
 }

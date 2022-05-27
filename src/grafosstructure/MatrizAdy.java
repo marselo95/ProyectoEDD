@@ -1,11 +1,15 @@
 package grafosstructure;
 
+//import org.graphstream.graph.*;
+
 public class MatrizAdy {
 
+ 
     private int numVerts;
     static int maxVerts = 5;
     Vertice[] verts;
-    int[][] matAd;
+    private int[][] matAd;
+//    Graph graph = new SingleGraph("Grafo");
 
     public MatrizAdy() {
         this(maxVerts);
@@ -62,7 +66,7 @@ public class MatrizAdy {
     }
 
     public void showMat() {
-        for (int[] matAd1 : matAd) {
+        for (int[] matAd1 : getMatAd()) {
             for (int j = 0; j < matAd1.length; j++) {
                 System.out.print(" " + matAd1[j] + " ");
             }
@@ -96,7 +100,7 @@ public class MatrizAdy {
 //            System.out.println(mat.verts[w].getName());
 //            System.out.println(a);
                 for (int u = 0; u < mat.getNumVerts(); u++) {
-                    if ((mat.matAd[w][u] != 0) && (m[u] == clave)) {
+                    if ((mat.getMatAd()[w][u] != 0) && (m[u] == clave)) {
                         m[u] = m[w] + 1;
                         cola.insert(u);
                     }
@@ -132,7 +136,7 @@ public class MatrizAdy {
                 var a = mat.verts[w].getData();
                 System.out.println(a);
                 for (int u = 0; u < mat.getNumVerts(); u++) {
-                    if ((mat.matAd[w][u] != 0) && (m[u] == clave)) {
+                    if ((mat.getMatAd()[w][u] != 0) && (m[u] == clave)) {
                         m[u] = m[w] + 1;
                         cola.insert(u);
                     }
@@ -150,7 +154,7 @@ public class MatrizAdy {
             System.out.println("El vertice no existe");
             return false;
         } else {
-            return matAd[va][vb] != 0;
+            return getMatAd()[va][vb] != 0;
         }
 
     }
@@ -160,6 +164,10 @@ public class MatrizAdy {
      */
     public int getNumVerts() {
         return numVerts;
+    }
+    
+    public int[][] getMatAd() {
+        return matAd;
     }
 
 }

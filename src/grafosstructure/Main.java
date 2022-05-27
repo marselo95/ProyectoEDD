@@ -1,22 +1,24 @@
 package grafosstructure;
 
+import org.graphstream.graph.Graph;
+import org.graphstream.ui.swing_viewer.ViewPanel;
+import org.graphstream.ui.view.Viewer;
+
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        
         Funciones fun = new Funciones();
-//        MatrizAdy matriz = fun.readTxt();
-          var txt = fun.openTxt();
-//         System.out.println(txt);
-          MatrizAdy matriz = fun.uploadGrafo(txt);
-          matriz.bfs(matriz, "X");
-//        matriz.showMat();
-//        System.out.println("");
-//        matriz.bfs(matriz, "C");
-//        for (int i = 0; i < a.length; i++) {
-//            System.out.println(a[i]);
-//        }
-       
+        String txt = fun.openTxt();
+        MatrizAdy matriz = fun.uploadGrafo(txt);
+        Graph graph = fun.Graphic(matriz);
+        System.setProperty("org.graphstream.ui", "swing");
+
+        graph.setAutoCreate(true);
+        graph.setStrict(false);
+        graph.display();
+//        Viewer viewer = new Viewer(graph, Viewer.ThreadingModel.GRAPH_IN_GUI_THREAD);
+//        ViewPanel viewPanel = (ViewPanel) viewer.addDefaultView(false);
+        
     }
 
 }

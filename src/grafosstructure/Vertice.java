@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package grafosstructure;
 
 public class Vertice {
@@ -22,7 +26,6 @@ public class Vertice {
         return getName().equals(n.getName());
     }
     
-    @Override
     public String toString(){
         return this.getName() + " (" + this.getNumVertice() + ")";
     }
@@ -30,7 +33,7 @@ public class Vertice {
     /**
      * @return the name
      */
-    public Object getName() {
+    public String getName() {
         return name;
     }
 
@@ -68,5 +71,4 @@ public class Vertice {
     public void setData(Lista data) {
         this.data = data;
     }
-
 }
