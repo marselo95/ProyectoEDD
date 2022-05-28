@@ -4,13 +4,7 @@
  */
 package grafosstructure;
 
-import java.awt.Component;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import org.graphstream.graph.Graph;
-import org.graphstream.ui.swing_viewer.SwingViewer;
-import org.graphstream.ui.swing_viewer.ViewPanel;
-import org.graphstream.ui.view.View;
 import org.graphstream.ui.view.Viewer;
 
 /**
