@@ -1,15 +1,11 @@
 package grafosstructure;
 
-//import org.graphstream.graph.*;
-
 public class MatrizAdy {
 
- 
     private int numVerts;
-    static int maxVerts = 5;
+    static int maxVerts = 12;
     Vertice[] verts;
     private int[][] matAd;
-//    Graph graph = new SingleGraph("Grafo");
 
     public MatrizAdy() {
         this(maxVerts);
@@ -74,10 +70,11 @@ public class MatrizAdy {
         }
     }
 
-    public int[] bfs(MatrizAdy mat, String name) {
+    public Lista bfs(MatrizAdy mat, String name) {
         int w, v;
         int clave = 100;
         int[] m;
+       Lista a = new Lista();
         v = mat.numVertice(name);
         if (v < 0) {
             System.out.println("El vertice no existe");
@@ -90,58 +87,21 @@ public class MatrizAdy {
             }
             m[v] = 0;
             cola.insert(v);
+            
             while (!cola.itsEmpty()) {
                 Integer cw;
                 cw = cola.delete();
                 w = cw;
-                System.out.println("Almacen " + mat.verts[w] + " Visitado");
-//            var a = mat.verts[w].getData().print();
-                mat.verts[w].getData().print();
-//            System.out.println(mat.verts[w].getName());
-//            System.out.println(a);
+                NodoLista nodo = new NodoLista(mat.verts[w]);
+                a.insertL(nodo);
                 for (int u = 0; u < mat.getNumVerts(); u++) {
-                    if ((mat.getMatAd()[w][u] != 0) && (m[u] == clave)) {
+                    if ((mat.getMatAd()[w][u] != 0) && (m[u] == clave) && (mat.verts[w] != null)) {
                         m[u] = m[w] + 1;
                         cola.insert(u);
                     }
                 }
             }
-            return m;
-
-        }
-
-    }
-
-    public void bfsP(MatrizAdy mat, String name) {
-        int w, v;
-        int clave = 100;
-        int[] m;
-        v = mat.numVertice(name);
-        if (v < 0) {
-            System.out.println("El vertice no existe");
-
-        } else {
-            ColaLista cola = new ColaLista();
-            m = new int[mat.getNumVerts()];
-            for (int i = 0; i < mat.getNumVerts(); i++) {
-                m[i] = clave;
-            }
-            m[v] = 0;
-            cola.insert(v);
-            while (!cola.itsEmpty()) {
-                Integer cw;
-                cw = cola.delete();
-                w = cw;
-                System.out.println("Vertice " + mat.verts[w] + " Visitado");
-                var a = mat.verts[w].getData();
-                System.out.println(a);
-                for (int u = 0; u < mat.getNumVerts(); u++) {
-                    if ((mat.getMatAd()[w][u] != 0) && (m[u] == clave)) {
-                        m[u] = m[w] + 1;
-                        cola.insert(u);
-                    }
-                }
-            }
+            return a;
         }
     }
 
@@ -165,7 +125,7 @@ public class MatrizAdy {
     public int getNumVerts() {
         return numVerts;
     }
-    
+
     public int[][] getMatAd() {
         return matAd;
     }
