@@ -5,7 +5,7 @@ public class Vertice {
     private String name;
     private Lista data;
     private int numVertice;
-    public boolean fueVisitado;
+    private boolean fueVisitado;
 
     public Vertice(String name) {
         this.name = name;
@@ -71,6 +71,21 @@ public class Vertice {
         this.data = data;
     }
 
+    /**
+     * @param fueVisitado the fueVisitado to set
+     */
+    public void setFueVisitado(boolean fueVisitado) {
+        this.fueVisitado = fueVisitado;
+    }
+
+    /**
+     * @return the fueVisitado
+     */
+    public boolean isFueVisitado() {
+        return fueVisitado;
+    }
+
 }
+
 
 

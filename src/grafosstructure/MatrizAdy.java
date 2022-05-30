@@ -142,19 +142,22 @@ public class MatrizAdy {
     
     public void dfs(MatrizAdy mat, String name){
         int v = mat.numVertice(name);
-        this.verts[v].fueVisitado = true;
+        this.verts[v].setFueVisitado(true);
         System.out.println("Vertice " + mat.verts[v] + " Visitado");
         mat.verts[v].getData().print();
         
         int u = mat.getVerticeNoVisitado(v);
-        if ((u != -1) && (!mat.verts[u].fueVisitado)) {
+        if ((u != -1) && (!mat.verts[u].isFueVisitado())) {
             dfs(mat, (String) mat.verts[u].getName());
+        }
+        for (int i = 0; i < mat.numVerts; i++) {
+            mat.verts[i].setFueVisitado(false);
         }
     }
     
     public int getVerticeNoVisitado(int v){
         for (int j = 0; j < getNumVerts(); j++) {
-            if ((matAd[v][j] != 0) && (verts[j].fueVisitado == false)) {
+            if ((matAd[v][j] != 0) && (!verts[j].isFueVisitado())) {
                 return j;
             }
         }

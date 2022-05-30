@@ -12,7 +12,6 @@ public class Main {
         System.out.println("\n" + "Visitas con dfs:" + "\n");
         matriz.dfs(matriz, "A");
         
-        
 //        Producto producto = new Producto("Monitor", 15);
 //        Producto producto2 = new Producto("Celular", 4);
 //        Producto producto3 = new Producto("Memoria", 20);
