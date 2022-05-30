@@ -9,6 +9,8 @@ public class Main {
         matriz.showMat();
         System.out.println("");
         matriz.bfs(matriz, "A");
+        System.out.println("\n" + "Visitas con dfs:" + "\n");
+        matriz.dfs(matriz, "A");
         
         
 //        Producto producto = new Producto("Monitor", 15);

@@ -4,7 +4,7 @@ public class MatrizAdy {
 
     private int numVerts;
     static int maxVerts = 5;
-    Vertice[] verts;
+    Vertice[] verts;            
     int[][] matAd;
 
     public MatrizAdy() {
@@ -138,6 +138,27 @@ public class MatrizAdy {
                 }
             }
         }
+    }
+    
+    public void dfs(MatrizAdy mat, String name){
+        int v = mat.numVertice(name);
+        this.verts[v].fueVisitado = true;
+        System.out.println("Vertice " + mat.verts[v] + " Visitado");
+        mat.verts[v].getData().print();
+        
+        int u = mat.getVerticeNoVisitado(v);
+        if ((u != -1) && (!mat.verts[u].fueVisitado)) {
+            dfs(mat, (String) mat.verts[u].getName());
+        }
+    }
+    
+    public int getVerticeNoVisitado(int v){
+        for (int j = 0; j < getNumVerts(); j++) {
+            if ((matAd[v][j] != 0) && (verts[j].fueVisitado == false)) {
+                return j;
+            }
+        }
+        return -1;
     }
 
     public boolean adyacente(String a, String b) {

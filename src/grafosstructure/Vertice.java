@@ -5,16 +5,19 @@ public class Vertice {
     private String name;
     private Lista data;
     private int numVertice;
+    public boolean fueVisitado;
 
     public Vertice(String name) {
         this.name = name;
         numVertice = -1;
+        this.fueVisitado = false;
     }
     
     public Vertice(String name, Lista data) {
         this.name = name;
         this.data = data;
         numVertice = -1;
+        this.fueVisitado = false;
     }
     
 
