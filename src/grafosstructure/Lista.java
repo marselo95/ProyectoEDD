@@ -1,46 +1,77 @@
 package grafosstructure;
 
-
 public class Lista {
-     private Nodo pFirst;
+
+    private Nodo pFirst;
     private Nodo pLast;
     private int size;
-    
-    public Lista(){
+    private NodoLista first;
+    private NodoLista last;
+
+    public Lista() {
         this.pFirst = null;
         this.pLast = null;
         this.size = 0;
     }
-    
-    public boolean itsEmpty(){
+
+    public boolean itsEmpty() {
         return this.getpFirst() == null;
     }
-    
-    public void empty(){
+
+    public boolean itsEmptyL() {
+        return this.getFirst() == null;
+    }
+
+    public void empty() {
         setpFirst(null);
         setpLast(null);
         setSize(0);
     }
-    
-    public void insert(Nodo data){
-        if(itsEmpty()){
+
+    public void insert(Nodo data) {
+        if (itsEmpty()) {
             this.setpFirst(data);
             this.setpLast(data);
-        }else{
+        } else {
             this.getpLast().setNext(data);
             this.setpLast(data);
         }
-        size++;
+        setSize(getSize() + 1);
     }
-    
-    public void print(){
-        if(!itsEmpty()){
+
+    public void insertL(NodoLista data) {
+        if (itsEmptyL()) {
+            this.setFirst(data);
+            this.setLast(data);
+        } else {
+            this.getLast().setNextL(data);
+            this.setLast(data);
+        }
+        setSize(getSize() + 1);
+    }
+
+    public String print() {
+        String aux = "";
+        if (!itsEmpty()) {
             Nodo nodoAux = this.getpFirst();
-            while(nodoAux != null){
-                System.out.println(nodoAux.getNombre()+" " + nodoAux.getExistencias());
+            while (nodoAux != null) {
+                aux += nodoAux.getNombre() + " " + nodoAux.getExistencias() + "\n";
                 nodoAux = nodoAux.getNext();
             }
+            return aux;
         }
+        return "";
+    }
+
+    public String printProductosDfs() {
+        String aux = "";
+
+        NodoLista nodoAux = this.getFirst();
+        while (nodoAux != null) {
+            aux += "Almacen" + " " + nodoAux.getV().getName() + ":" + "\n" + nodoAux.getV().getData().print() + "\n";
+            nodoAux = nodoAux.getNextL();
+        }
+        return aux;
     }
 
     /**
@@ -83,5 +114,33 @@ public class Lista {
      */
     public void setSize(int size) {
         this.size = size;
+    }
+
+    /**
+     * @return the first
+     */
+    public NodoLista getFirst() {
+        return first;
+    }
+
+    /**
+     * @param first the first to set
+     */
+    public void setFirst(NodoLista first) {
+        this.first = first;
+    }
+
+    /**
+     * @return the last
+     */
+    public NodoLista getLast() {
+        return last;
+    }
+
+    /**
+     * @param last the last to set
+     */
+    public void setLast(NodoLista last) {
+        this.last = last;
     }
 }

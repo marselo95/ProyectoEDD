@@ -1,11 +1,13 @@
 package grafosstructure;
 
+import javax.swing.JOptionPane;
+
 public class MatrizAdy {
 
     private int numVerts;
-    static int maxVerts = 5;
-    Vertice[] verts;            
-    int[][] matAd;
+    static int maxVerts = 12;
+    Vertice[] verts;
+    private int[][] matAd;
 
     public MatrizAdy() {
         this(maxVerts);
@@ -54,7 +56,7 @@ public class MatrizAdy {
         va  = numVertice(a);
         vb = numVertice(b);
         if (va  < 0 || vb < 0) {
-            System.out.println("ElVertice no existe");
+            System.out.println("El Vertice no existe");
         } else {
             this.matAd[va][vb] = peso;
         }
@@ -62,7 +64,7 @@ public class MatrizAdy {
     }
 
     public void showMat() {
-        for (int[] matAd1 : matAd) {
+        for (int[] matAd1 : getMatAd()) {
             for (int j = 0; j < matAd1.length; j++) {
                 System.out.print(" " + matAd1[j] + " ");
             }
@@ -70,10 +72,11 @@ public class MatrizAdy {
         }
     }
 
-    public int[] bfs(MatrizAdy mat, String name) {
+    public Lista bfs(MatrizAdy mat, String name) {
         int w, v;
         int clave = 100;
         int[] m;
+        Lista a = new Lista();
         v = mat.numVertice(name);
         if (v < 0) {
             System.out.println("El vertice no existe");
@@ -86,76 +89,60 @@ public class MatrizAdy {
             }
             m[v] = 0;
             cola.insert(v);
+
             while (!cola.itsEmpty()) {
                 Integer cw;
                 cw = cola.delete();
                 w = cw;
-                System.out.println("Vertice " + mat.verts[w] + " Visitado");
-//            var a = mat.verts[w].getData().print();
-                mat.verts[w].getData().print();
-//            System.out.println(a);
+                NodoLista nodo = new NodoLista(mat.verts[w]);
+                a.insertL(nodo);
                 for (int u = 0; u < mat.getNumVerts(); u++) {
-                    if ((mat.matAd[w][u] != 0) && (m[u] == clave)) {
+                    if ((mat.getMatAd()[w][u] != 0) && (m[u] == clave) && (mat.verts[w] != null)) {
                         m[u] = m[w] + 1;
                         cola.insert(u);
                     }
                 }
             }
-            return m;
-
-        }
-
-    }
-
-    public void bfsP(MatrizAdy mat, String name) {
-        int w, v;
-        int clave = 100;
-        int[] m;
-        v = mat.numVertice(name);
-        if (v < 0) {
-            System.out.println("El vertice no existe");
-
-        } else {
-            ColaLista cola = new ColaLista();
-            m = new int[mat.getNumVerts()];
-            for (int i = 0; i < mat.getNumVerts(); i++) {
-                m[i] = clave;
-            }
-            m[v] = 0;
-            cola.insert(v);
-            while (!cola.itsEmpty()) {
-                Integer cw;
-                cw = cola.delete();
-                w = cw;
-                System.out.println("Vertice " + mat.verts[w] + " Visitado");
-                var a = mat.verts[w].getData();
-                System.out.println(a);
-                for (int u = 0; u < mat.getNumVerts(); u++) {
-                    if ((mat.matAd[w][u] != 0) && (m[u] == clave)) {
-                        m[u] = m[w] + 1;
-                        cola.insert(u);
-                    }
-                }
-            }
+            return a;
         }
     }
-    
-    public void dfs(MatrizAdy mat, String name){
+
+    public Lista dfs(MatrizAdy mat, String name) {
+        Lista vis = new Lista();
         int v = mat.numVertice(name);
-        this.verts[v].setFueVisitado(true);
-        System.out.println("Vertice " + mat.verts[v] + " Visitado");
-        mat.verts[v].getData().print();
         
-        int u = mat.getVerticeNoVisitado(v);
-        if ((u != -1) && (!mat.verts[u].isFueVisitado())) {
-            dfs(mat, (String) mat.verts[u].getName());
-        }
-        for (int i = 0; i < mat.numVerts; i++) {
-            mat.verts[i].setFueVisitado(false);
+        if (v < 0) {
+            JOptionPane.showMessageDialog(null, "El vertice no existe");
+            return vis;
+        } else {
+            mat.verts[v].setFueVisitado(true);
+//            NodoLista nodo = new NodoLista(mat.verts[v]);
+//            vis.insertL(nodo);
+
+            int u = mat.getVerticeNoVisitado(v);
+            if ((u != -1) && (!mat.verts[u].isFueVisitado())) {
+                dfs(mat, (String) mat.verts[u].getName());
+
+//                Lista vis = new Lista();
+//                NodoLista nodo = new NodoLista(mat.verts[v]);
+//                vis.insertL(nodo);
+            }
+
+            for (int i = 0; i < mat.numVerts; i++) {
+                if (mat.verts[i].isFueVisitado()) {
+                    NodoLista nodo = new NodoLista(mat.verts[i]);
+                    vis.insertL(nodo);
+                }
+
+            }
+//            for (int i = 0; i < mat.numVerts; i++) {
+//                mat.verts[i].setFueVisitado(false);
+//            }
+            return vis;
         }
     }
-    
-    public int getVerticeNoVisitado(int v){
+
+    public int getVerticeNoVisitado(int v) {
         for (int j = 0; j < getNumVerts(); j++) {
             if ((matAd[v][j] != 0) && (!verts[j].isFueVisitado())) {
                 return j;
@@ -173,7 +160,7 @@ public class MatrizAdy {
             System.out.println("El vertice no existe");
             return false;
         } else {
-            return matAd[va][vb] != 0;
+            return getMatAd()[va][vb] != 0;
         }
 
     }
@@ -183,6 +170,10 @@ public class MatrizAdy {
      */
     public int getNumVerts() {
         return numVerts;
+    }
+
+    public int[][] getMatAd() {
+        return matAd;
     }
 
 }
