@@ -10,11 +10,11 @@ public class Main {
 
         MatrizAdy matriz = fun.readTxt();
 
-        matriz.showMat();
-        System.out.println("\n" + "Visitas con dfs:" + "\n");
-        
+//        matriz.showMat();
+//        System.out.println("\n" + "Visitas con dfs:" + "\n");
+//        
         Lista visitados = matriz.dfs(matriz, "A");
-        System.out.println(visitados.printProductosDfs());
+        JOptionPane.showMessageDialog(null, visitados.printProductosDfs());
         
 //        JOptionPane.showMessageDialog(null, visitados.printRecorrido());
 

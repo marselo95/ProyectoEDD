@@ -57,9 +57,9 @@ public class Funciones {
     }
 
     public MatrizAdy uploadGrafo(String txt) {
-       MatrizAdy matriz = new MatrizAdy();
+        MatrizAdy matriz = new MatrizAdy();
         try {
-             
+
             if (!"".equals(txt) && !txt.isEmpty()) {
                 String[] txtSplit = txt.split("Rutas;");
 
@@ -85,7 +85,6 @@ public class Funciones {
                                 String b = a[1].replace(":", "");
                                 matriz.newVertice(b, lista);
 
-
                             }
 
                         }
@@ -99,12 +98,12 @@ public class Funciones {
                         matriz.newEdge(ruta[0], ruta[1], Integer.parseInt(ruta[2]));
                     }
                 }
-                
+
             }
 
             return matriz;
         } catch (Exception err) {
-            JOptionPane.showMessageDialog(null,"Error al leer archivo, cargando datos por defecto");
+            JOptionPane.showMessageDialog(null, "Error al leer archivo, cargando datos por defecto");
             var a = this.readTxt();
             return a;
         }
