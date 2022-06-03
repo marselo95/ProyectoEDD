@@ -2,8 +2,8 @@ package grafosstructure;
 
 public class Lista {
 
-    private Producto pFirst;
-    private Producto pLast;
+    private Nodo pFirst;
+    private Nodo pLast;
     private int size;
     private NodoLista first;
     private NodoLista last;
@@ -28,7 +28,7 @@ public class Lista {
         setSize(0);
     }
 
-    public void insert(Producto data) {
+    public void insert(Nodo data) {
         if (itsEmpty()) {
             this.setpFirst(data);
             this.setpLast(data);
@@ -53,7 +53,7 @@ public class Lista {
     public String print() {
         String aux = "";
         if (!itsEmpty()) {
-            Producto nodoAux = this.getpFirst();
+            Nodo nodoAux = this.getpFirst();
             while (nodoAux != null) {
                 aux += nodoAux.getNombre() + " " + nodoAux.getExistencias() + "\n";
                 nodoAux = nodoAux.getNext();
@@ -77,28 +77,28 @@ public class Lista {
     /**
      * @return the pFirst
      */
-    public Producto getpFirst() {
+    public Nodo getpFirst() {
         return pFirst;
     }
 
     /**
      * @param pFirst the pFirst to set
      */
-    public void setpFirst(Producto pFirst) {
+    public void setpFirst(Nodo pFirst) {
         this.pFirst = pFirst;
     }
 
     /**
      * @return the pLast
      */
-    public Producto getpLast() {
+    public Nodo getpLast() {
         return pLast;
     }
 
     /**
      * @param pLast the pLast to set
      */
-    public void setpLast(Producto pLast) {
+    public void setpLast(Nodo pLast) {
         this.pLast = pLast;
     }
 
