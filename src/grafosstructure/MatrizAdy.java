@@ -4,7 +4,7 @@ public class MatrizAdy {
 
     private int numVerts;
     static int maxVerts = 5;
-    Vertice[] verts;
+    public Vertice[] verts;
     int[][] matAd;
 
     public MatrizAdy() {
