@@ -13,7 +13,7 @@ import org.graphstream.ui.view.Viewer;
  */
 public class GUI extends javax.swing.JFrame {
 
-    Funciones fun = new Funciones();
+    ModificadorTxt fun = new ModificadorTxt();
     String txt = fun.openTxt();
     MatrizAdy matriz = fun.uploadGrafo(txt);
     Graph graph = fun.Graphic(matriz);

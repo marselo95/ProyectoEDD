@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.implementations.SingleGraph;
 
-public class Funciones {
+public class ModificadorTxt {
 
     public MatrizAdy readTxt() {
         String line;
@@ -76,7 +76,7 @@ public class Funciones {
                                     if (k > 1) {
                                         String[] productos = almacen[k].split(",");
 
-                                        Nodo nodo = new Nodo(productos[0], Integer.parseInt(productos[1]));
+                                        Producto nodo = new Producto(productos[0], Integer.parseInt(productos[1]));
                                         lista.insert(nodo);
                                     }
 

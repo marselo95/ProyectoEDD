@@ -1,11 +1,11 @@
 package grafosstructure;
 
-public class Nodo {
+public class Producto {
     private String nombre;
     private int existencias;
-    private Nodo next;
+    private Producto next;
     
-    public Nodo(String name, int exist){
+    public Producto(String name, int exist){
         this.nombre = name;
         this.existencias = exist;
         this.next = null;
@@ -42,14 +42,14 @@ public class Nodo {
     /**
      * @return the next
      */
-    public Nodo getNext() {
+    public Producto getNext() {
         return next;
     }
 
     /**
      * @param next the next to set
      */
-    public void setNext(Nodo next) {
+    public void setNext(Producto next) {
         this.next = next;
     }
 }

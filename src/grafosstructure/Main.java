@@ -6,7 +6,7 @@ import org.graphstream.graph.Graph;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        Funciones fun = new Funciones();
+        ModificadorTxt fun = new ModificadorTxt();
 
         MatrizAdy matriz = fun.readTxt();
 
