@@ -6,8 +6,8 @@ public class MatrizAdy {
 
     private int numVerts;
     static int maxVerts = 12;
-    Vertice[] verts;
-    private int[][] matAd;
+    public Vertice[] verts;
+    int[][] matAd;
 
     public MatrizAdy() {
         this(maxVerts);
