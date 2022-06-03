@@ -46,15 +46,15 @@ public class VPedido extends javax.swing.JFrame {
         }
     }
 
-    public Nodo Comparar(Lista productos, String producto) {
-        Nodo aux = productos.getpFirst();
-        for (aux; aux != null; aux.getNext()){
-            if (producto.equals(aux.getNombre())) {
-                return aux;
-            }
-        }
-        return null;
-    }
+//    public Nodo Comparar(Lista productos, String producto) {
+//        Nodo aux = productos.getpFirst();
+//        for (aux; aux != null; aux.getNext()){
+//            if (producto.equals(aux.getNombre())) {
+//                return aux;
+//            }
+//        }
+//        return null;
+//    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -155,8 +155,6 @@ public class VPedido extends javax.swing.JFrame {
         String Producto = this.iproducto.getText().toLowerCase();
         int almacen = matriz.numVertice(this.ialmacen.getText().toUpperCase());
         JSpinner cantidad = icantidad;
-
-        if ()
         
     }//GEN-LAST:event_PedidoMouseClicked
 
