@@ -3,22 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Liz/Desktop/ProyectoEDD/src/grafosstructure/Vertice.java</file>
-            <file>file:/C:/Users/Liz/Desktop/ProyectoEDD/src/interfaz/Inicio.java</file>
-            <file>file:/C:/Users/Liz/Desktop/ProyectoEDD/src/grafosstructure/Pedido.java</file>
-            <file>file:/C:/Users/Liz/Desktop/ProyectoEDD/src/interfaz/interfazMain.java</file>
-            <file>file:/C:/Users/Liz/Desktop/ProyectoEDD/src/grafosstructure/Nodo.java</file>
-            <file>file:/C:/Users/Liz/Desktop/ProyectoEDD/src/interfaz/ReporteStock.java</file>
-            <file>file:/C:/Users/Liz/Desktop/ProyectoEDD/src/grafosstructure/Lista.java</file>
-            <file>file:/C:/Users/Liz/Desktop/ProyectoEDD/src/grafosstructure/Producto.java</file>
-            <file>file:/C:/Users/Liz/Desktop/ProyectoEDD/src/grafosstructure/funciones.java</file>
-            <file>file:/C:/Users/Liz/Desktop/ProyectoEDD/src/grafosstructure/MatrizAdy.java</file>
-            <file>file:/C:/Users/Liz/Desktop/ProyectoEDD/src/grafosstructure/Dijkstra.java</file>
-            <file>file:/C:/Users/Liz/Desktop/ProyectoEDD/src/interfaz/GestionarStock.java</file>
-            <file>file:/C:/Users/Liz/Desktop/ProyectoEDD/src/grafosstructure/Main.java</file>
-            <file>file:/C:/Users/Liz/Desktop/ProyectoEDD/src/interfaz/VentanaPedido.java</file>
-            <file>file:/C:/Users/Liz/Desktop/ProyectoEDD/src/interfaz/Menu.java</file>
-            <file>file:/C:/Users/Liz/Desktop/ProyectoEDD/src/interfaz/VPedido.java</file>
+            <file>file:/C:/Users/Juan/OneDrive/Escritorio/Juan%20Unimet/Trimestre%206/Estructuras%20de%20datos/ProyectoEDD/src/grafosstructure/Main.java</file>
+            <file>file:/C:/Users/Juan/OneDrive/Escritorio/Juan%20Unimet/Trimestre%206/Estructuras%20de%20datos/ProyectoEDD/src/grafosstructure/Vertice.java</file>
+            <file>file:/C:/Users/Juan/OneDrive/Escritorio/Juan%20Unimet/Trimestre%206/Estructuras%20de%20datos/ProyectoEDD/src/grafosstructure/Producto.java</file>
+            <file>file:/C:/Users/Juan/OneDrive/Escritorio/Juan%20Unimet/Trimestre%206/Estructuras%20de%20datos/ProyectoEDD/src/interfaz/GestionarStock.java</file>
+            <file>file:/C:/Users/Juan/OneDrive/Escritorio/Juan%20Unimet/Trimestre%206/Estructuras%20de%20datos/ProyectoEDD/src/grafosstructure/Lista.java</file>
+            <file>file:/C:/Users/Juan/OneDrive/Escritorio/Juan%20Unimet/Trimestre%206/Estructuras%20de%20datos/ProyectoEDD/src/interfaz/Inicio.java</file>
+            <file>file:/C:/Users/Juan/OneDrive/Escritorio/Juan%20Unimet/Trimestre%206/Estructuras%20de%20datos/ProyectoEDD/src/grafosstructure/MatrizAdy.java</file>
+            <file>file:/C:/Users/Juan/OneDrive/Escritorio/Juan%20Unimet/Trimestre%206/Estructuras%20de%20datos/ProyectoEDD/test/av.txt</file>
         </group>
     </open-files>
 </project-private>
