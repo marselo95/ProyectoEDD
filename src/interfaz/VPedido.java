@@ -154,7 +154,7 @@ public class VPedido extends javax.swing.JFrame {
         MatrizAdy matriz = this.gatMatrizAdy();
         
         String Producto = this.iproducto.getText().toLowerCase();   
-        int almacen = this.ialmacen.getText().toUpperCase().getNumVertice();
+        int almacen = matriz.numVertice(this.ialmacen.getText().toUpperCase());
         JSpinner cantidad = icantidad;
         
         if ()
