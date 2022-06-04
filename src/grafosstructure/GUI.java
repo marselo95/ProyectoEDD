@@ -4,6 +4,7 @@
  */
 package grafosstructure;
 
+import interfaz.Global;
 import org.graphstream.graph.Graph;
 import org.graphstream.ui.view.Viewer;
 
@@ -14,8 +15,8 @@ import org.graphstream.ui.view.Viewer;
 public class GUI extends javax.swing.JFrame {
 
     Funciones fun = new Funciones();
-    String txt = fun.openTxt();
-    MatrizAdy matriz = fun.uploadGrafo(txt);
+    String txt = fun.openTxt().getTxt();
+    MatrizAdy matriz = fun.uploadGrafo(Global.getArchivo());
     Graph graph = fun.Graphic(matriz);
     
     

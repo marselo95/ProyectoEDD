@@ -3,14 +3,16 @@ package grafosstructure;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.PrintWriter;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.implementations.SingleGraph;
+import grafosstructure.ArchivoSub;
 
 public class Funciones {
 
-    public MatrizAdy readTxt() {
+    public MatrizAdy readTxt(ArchivoSub archivo) {
         String line;
         String txt = "";
         String path = "test\\av.txt";
@@ -26,7 +28,8 @@ public class Funciones {
                         txt += line + "\n";
                     }
                 }
-                var a = uploadGrafo(txt);
+                archivo.setTxt(txt);
+                var a = uploadGrafo(archivo);
                 return a;
             }
         } catch (Exception err) {
@@ -35,13 +38,15 @@ public class Funciones {
         return null;
     }
 
-    public String openTxt() {
+    public ArchivoSub openTxt() {
         String aux = "";
+        ArchivoSub archivo = new ArchivoSub();
         String txt = "";
         try {
             JFileChooser file = new JFileChooser();
             file.showOpenDialog(file);
             File abrir = file.getSelectedFile();
+            archivo.setFile(file);
             if (abrir != null) {
                 FileReader fr = new FileReader(abrir);
                 BufferedReader br = new BufferedReader(fr);
@@ -53,11 +58,13 @@ public class Funciones {
         } catch (Exception err) {
             JOptionPane.showMessageDialog(null, "Error al abrir el archivo");
         }
-        return txt;
+        archivo.setTxt(txt);
+        return archivo;
     }
 
-    public MatrizAdy uploadGrafo(String txt) {
+    public MatrizAdy uploadGrafo(ArchivoSub archivo) {
         MatrizAdy matriz = new MatrizAdy();
+        String txt = archivo.getTxt();
         try {
 
             if (!"".equals(txt) && !txt.isEmpty()) {
@@ -103,8 +110,9 @@ public class Funciones {
 
             return matriz;
         } catch (Exception err) {
+            archivo.setIdentificador(1);
             JOptionPane.showMessageDialog(null, "Error al leer archivo, cargando datos por defecto");
-            var a = this.readTxt();
+            var a = this.readTxt(archivo);
             return a;
         }
     }
@@ -131,6 +139,61 @@ public class Funciones {
 
         }
         return graph;
+    }
+
+    public void WriteTxt(MatrizAdy matriz, ArchivoSub archivo) {
+        String grafoActualizado = "";
+        Lista visitados = matriz.bfs(matriz, "A");
+
+        if (matriz.getNumVerts() != 0) {
+            //acceder matady y escribir txt
+            grafoActualizado += "Almacenes;";
+            for (int i = 0; i < visitados.getSize(); i++) {
+                grafoActualizado += "\n" + "Almacen" + " " + matriz.verts[i].getName() + ":";
+                Lista productos = matriz.verts[i].getData();
+                grafoActualizado += this.printProductos(productos);
+            }
+            grafoActualizado += "\n" + "Rutas;";
+            int[][] matAdy = matriz.matAd;
+            for (int i = 0; i < visitados.getSize(); i++) {
+                for (int j = 0; j < visitados.getSize(); j++) {
+                    if (matAdy[i][j] != 0) {
+                        //escribir la ruta
+                        grafoActualizado += "\n" + matriz.verts[i].getName() + "," + matriz.verts[j].getName() + "," + matAdy[i][j];
+                    }
+                }
+            }
+        }
+        try {
+            if (archivo.getIdentificador() == 1) {
+                PrintWriter pw = new PrintWriter("test\\av.txt");
+                pw.print(grafoActualizado);
+                pw.close();
+                JOptionPane.showMessageDialog(null, "La informacion se ha guardado con éxito");
+            } else {
+                PrintWriter pw = new PrintWriter(archivo.getFile().getSelectedFile());
+                pw.print(grafoActualizado);
+                pw.close();
+                JOptionPane.showMessageDialog(null, "La informacion se ha guardado con éxito");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Se ha producido un error al guardar la informacion");
+        }
+    }
+
+    public String printProductos(Lista productos) {
+        String aux = "";
+        if (!productos.itsEmpty()) {
+            Nodo nodoAux = productos.getpFirst();
+            while (nodoAux != null) {
+                aux += "\n" + nodoAux.getNombre() + "," + nodoAux.getExistencias();
+                nodoAux = nodoAux.getNext();
+            }
+            aux += ";";
+            return aux;
+        }
+        return "";
     }
 
 }

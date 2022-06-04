@@ -57,11 +57,11 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="BReporteStock" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
                               <Component id="jButton7" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
-                              <Component id="jButton5" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
+                              <Component id="NuevoAlmacen" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                              <Component id="ActRepo" min="-2" max="-2" attributes="0"/>
                               <Component id="RealizarPedido" alignment="1" min="-2" pref="190" max="-2" attributes="0"/>
                               <Component id="jButton4" alignment="1" min="-2" pref="190" max="-2" attributes="0"/>
                           </Group>
@@ -84,11 +84,11 @@
                   <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="BReporteStock" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="ActRepo" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton5" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="NuevoAlmacen" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                       <Component id="RealizarPedido" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
@@ -112,7 +112,7 @@
             <Property name="text" type="java.lang.String" value="&#xbf;Qu&#xe9; desea hacer?"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="ActRepo">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -126,7 +126,7 @@
             <Property name="text" type="java.lang.String" value="Actualizar repositorio"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ActRepoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="RealizarPedido">
@@ -182,7 +182,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton5">
+        <Component class="javax.swing.JButton" name="NuevoAlmacen">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -196,7 +196,7 @@
             <Property name="text" type="java.lang.String" value="Nuevo almac&#xe9;n"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NuevoAlmacenActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="MostrarGrafo">

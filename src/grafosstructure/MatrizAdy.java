@@ -162,7 +162,6 @@ public class MatrizAdy {
         } else {
             return getMatAd()[va][vb] != 0;
         }
-
     }
 
     /**

@@ -5,8 +5,11 @@
  */
 package interfaz;
 
+import grafosstructure.ArchivoSub;
 import grafosstructure.Funciones;
+import grafosstructure.Lista;
 import grafosstructure.MatrizAdy;
+import grafosstructure.Nodo;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -22,7 +25,8 @@ import interfaz.Global;
  */
 public class Menu extends javax.swing.JFrame {
     
-    MatrizAdy matriz = this.CargarArchivo();
+    ArchivoSub archivo = this.GetArchivo();
+    MatrizAdy matriz = this.CargarArchivo(archivo);
     
     
     /**
@@ -32,13 +36,21 @@ public class Menu extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        Global.setMatriz(matriz);
+        Global.setArchivo(archivo);
     }
 
-    public MatrizAdy CargarArchivo() {
+    public MatrizAdy CargarArchivo(ArchivoSub archivo) {
         Funciones fun = new Funciones();
-        String txt = fun.openTxt();
-        MatrizAdy matriz = fun.uploadGrafo(txt);
+        String txt = archivo.getTxt();
+        MatrizAdy matriz = fun.uploadGrafo(archivo);
         return matriz;
+    }
+    
+    public ArchivoSub GetArchivo(){
+        Funciones fun = new Funciones();
+        ArchivoSub archivo = fun.openTxt();
+        return archivo;
     }
 
     /**
@@ -52,11 +64,11 @@ public class Menu extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        ActRepo = new javax.swing.JButton();
         RealizarPedido = new javax.swing.JButton();
         BReporteStock = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        NuevoAlmacen = new javax.swing.JButton();
         MostrarGrafo = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
@@ -71,13 +83,13 @@ public class Menu extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Agency FB", 0, 48)); // NOI18N
         jLabel1.setText("¿Qué desea hacer?");
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 204));
-        jButton1.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Actualizar repositorio");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ActRepo.setBackground(new java.awt.Color(204, 204, 204));
+        ActRepo.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
+        ActRepo.setForeground(new java.awt.Color(0, 0, 0));
+        ActRepo.setText("Actualizar repositorio");
+        ActRepo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ActRepoActionPerformed(evt);
             }
         });
 
@@ -121,13 +133,13 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(204, 204, 204));
-        jButton5.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(0, 0, 0));
-        jButton5.setText("Nuevo almacén");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        NuevoAlmacen.setBackground(new java.awt.Color(204, 204, 204));
+        NuevoAlmacen.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
+        NuevoAlmacen.setForeground(new java.awt.Color(0, 0, 0));
+        NuevoAlmacen.setText("Nuevo almacén");
+        NuevoAlmacen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                NuevoAlmacenActionPerformed(evt);
             }
         });
 
@@ -188,10 +200,10 @@ public class Menu extends javax.swing.JFrame {
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(BReporteStock, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 190, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(jButton7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 190, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jButton5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 190, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                            .add(NuevoAlmacen, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 190, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                         .add(146, 146, 146)
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jButton1)
+                            .add(ActRepo)
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, RealizarPedido, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 190, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, jButton4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 190, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                     .add(jPanel1Layout.createSequentialGroup()
@@ -208,10 +220,10 @@ public class Menu extends javax.swing.JFrame {
                 .add(61, 61, 61)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(BReporteStock, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(ActRepo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(39, 39, 39)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jButton5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(NuevoAlmacen, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(RealizarPedido, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(30, 30, 30)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
@@ -227,9 +239,17 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ActRepoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActRepoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        Lista productos = new Lista();
+        Nodo prod = new Nodo("Laptop",10);
+        productos.insert(prod);
+        matriz.newVertice("F", productos);
+        matriz.newEdge("A", "F", 28);
+        
+        Funciones fun = new Funciones();
+        fun.WriteTxt(Global.getMatriz(), archivo);
+    }//GEN-LAST:event_ActRepoActionPerformed
 
     private void RealizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RealizarPedidoActionPerformed
         // TODO add your handling code here:
@@ -245,9 +265,9 @@ public class Menu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void NuevoAlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevoAlmacenActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_NuevoAlmacenActionPerformed
 
     private void MostrarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarGrafoActionPerformed
         // TODO add your handling code here:
@@ -275,7 +295,7 @@ public class Menu extends javax.swing.JFrame {
     private void MostrarGrafoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MostrarGrafoMouseClicked
         // TODO add your handling code here:
         Funciones fun = new Funciones();
-        Graph graph = fun.Graphic(this.matriz);
+        Graph graph = fun.Graphic(Global.getMatriz());
         System.setProperty("org.graphstream.ui", "swing");
         graph.display();
     }//GEN-LAST:event_MostrarGrafoMouseClicked
@@ -323,12 +343,12 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ActRepo;
     private javax.swing.JButton BReporteStock;
     private javax.swing.JButton MostrarGrafo;
+    private javax.swing.JButton NuevoAlmacen;
     private javax.swing.JButton RealizarPedido;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;

@@ -5,6 +5,7 @@
  */
 package interfaz;
 
+import grafosstructure.ArchivoSub;
 import grafosstructure.Lista;
 import grafosstructure.MatrizAdy;
 import grafosstructure.Nodo;
@@ -20,6 +21,7 @@ import javax.swing.JOptionPane;
  */
 public class VPedido extends javax.swing.JFrame {
     MatrizAdy matriz = Global.getMatriz();
+    ArchivoSub archivo = Global.getArchivo();
     /**
      * Creates new form VPedido
      */
@@ -31,7 +33,7 @@ public class VPedido extends javax.swing.JFrame {
 
     public MatrizAdy gatMatrizAdy() {
         Funciones fun = new Funciones();
-        MatrizAdy matriz = fun.readTxt();
+        MatrizAdy matriz = fun.readTxt(archivo);
         return matriz;
     }
 

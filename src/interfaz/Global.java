@@ -4,6 +4,7 @@
  */
 package interfaz;
 
+import grafosstructure.ArchivoSub;
 import grafosstructure.Funciones;
 import grafosstructure.MatrizAdy;
 
@@ -13,6 +14,7 @@ import grafosstructure.MatrizAdy;
  */
 public class Global {
     private static MatrizAdy matriz = null;
+    private static ArchivoSub archivo;
 
     /**
      * @return the matriz
@@ -28,6 +30,13 @@ public class Global {
         matriz = aMatriz;
     }
 
+    public static ArchivoSub getArchivo() {
+        return archivo;
+    }
+
+    public static void setArchivo(ArchivoSub archivo) {
+        Global.archivo = archivo;
+    }
     
 }
 
