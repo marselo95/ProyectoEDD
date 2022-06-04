@@ -11,13 +11,15 @@ import grafosstructure.Nodo;
 import grafosstructure.Funciones;
 import grafosstructure.Vertice;
 import javax.swing.JSpinner;
+import interfaz.Global;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Liz
  */
 public class VPedido extends javax.swing.JFrame {
-
+    MatrizAdy matriz = Global.getMatriz();
     /**
      * Creates new form VPedido
      */
@@ -70,6 +72,7 @@ public class VPedido extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         icantidad = new javax.swing.JSpinner();
         Pedido = new javax.swing.JButton();
+        infoDfs = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -130,6 +133,7 @@ public class VPedido extends javax.swing.JFrame {
             }
         });
         jPanel1.add(Pedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 120, -1));
+        jPanel1.add(infoDfs, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 170, 80));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 500));
 
@@ -198,6 +202,7 @@ public class VPedido extends javax.swing.JFrame {
     private javax.swing.JButton RegresarMenu;
     private javax.swing.JTextField ialmacen;
     private javax.swing.JSpinner icantidad;
+    private javax.swing.JLabel infoDfs;
     private javax.swing.JTextField iproducto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

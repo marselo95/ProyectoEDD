@@ -22,8 +22,6 @@ public class GUI extends javax.swing.JFrame {
 
     public GUI() {
         initComponents();
-        
- 
     }
 
     /**
@@ -52,7 +50,7 @@ public class GUI extends javax.swing.JFrame {
                 showActionPerformed(evt);
             }
         });
-        getContentPane().add(show, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, -1, -1));
+        getContentPane().add(show, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
