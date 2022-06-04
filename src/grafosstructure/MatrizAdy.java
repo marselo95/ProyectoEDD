@@ -46,7 +46,7 @@ public class MatrizAdy {
             verts[numVerts++] = v;
 
         } else {
-            System.out.println("El vertice ya existe");
+            JOptionPane.showMessageDialog(null, "El vertice ya existe");
         }
     }
 
@@ -56,7 +56,7 @@ public class MatrizAdy {
         va  = numVertice(a);
         vb = numVertice(b);
         if (va  < 0 || vb < 0) {
-            System.out.println("El Vertice no existe");
+            JOptionPane.showMessageDialog(null, "El vertice no existe");
         } else {
             this.matAd[va][vb] = peso;
         }
@@ -79,7 +79,7 @@ public class MatrizAdy {
         Lista a = new Lista();
         v = mat.numVertice(name);
         if (v < 0) {
-            System.out.println("El vertice no existe");
+            JOptionPane.showMessageDialog(null, "El vertice no existe");
             return null;
         } else {
             ColaLista cola = new ColaLista();
@@ -110,22 +110,15 @@ public class MatrizAdy {
     public Lista dfs(MatrizAdy mat, String name) {
         Lista vis = new Lista();
         int v = mat.numVertice(name);
-        
+
         if (v < 0) {
             JOptionPane.showMessageDialog(null, "El vertice no existe");
             return vis;
         } else {
             mat.verts[v].setFueVisitado(true);
-//            NodoLista nodo = new NodoLista(mat.verts[v]);
-//            vis.insertL(nodo);
-
             int u = mat.getVerticeNoVisitado(v);
             if ((u != -1) && (!mat.verts[u].isFueVisitado())) {
                 dfs(mat, (String) mat.verts[u].getName());
-
-//                Lista vis = new Lista();
-//                NodoLista nodo = new NodoLista(mat.verts[v]);
-//                vis.insertL(nodo);
             }
 
             for (int i = 0; i < mat.numVerts; i++) {
@@ -135,9 +128,11 @@ public class MatrizAdy {
                 }
 
             }
-//            for (int i = 0; i < mat.numVerts; i++) {
-//                mat.verts[i].setFueVisitado(false);
-//            }
+            for (int i = 0; i < mat.getNumVerts(); i++) {
+                if (!mat.verts[i].isFueVisitado()) {
+                    dfs(mat, mat.verts[i].getName());
+                }
+            }
             return vis;
         }
     }
@@ -157,7 +152,7 @@ public class MatrizAdy {
         va  = numVertice(a);
         vb = numVertice(b);
         if (va  < 0 || vb < 0) {
-            System.out.println("El vertice no existe");
+            JOptionPane.showMessageDialog(null, "El vertice no existe");
             return false;
         } else {
             return getMatAd()[va][vb] != 0;

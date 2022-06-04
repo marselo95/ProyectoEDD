@@ -6,15 +6,24 @@
 
 package interfaz;
 
+import grafosstructure.Funciones;
+import grafosstructure.Lista;
+import grafosstructure.MatrizAdy;
+import grafosstructure.Nodo;
+
 /**
  *
  * @author Liz
  */
 public class ReporteStock extends javax.swing.JFrame {
+    
+    MatrizAdy matriz = Global.getMatriz();
 
     /** Creates new form ReporteStock */
     public ReporteStock() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
     }
 
     /** This method is called from within the constructor to
@@ -29,13 +38,14 @@ public class ReporteStock extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        PanelBfs = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        panelDfs = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        volver = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        solicitar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -46,52 +56,90 @@ public class ReporteStock extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("DFS");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, -1, -1));
 
-        jTextArea1.setBackground(new java.awt.Color(204, 204, 204));
-        jTextArea1.setColumns(20);
-        jTextArea1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        PanelBfs.setBackground(new java.awt.Color(204, 204, 204));
+        PanelBfs.setColumns(20);
+        PanelBfs.setForeground(new java.awt.Color(0, 0, 0));
+        PanelBfs.setRows(5);
+        jScrollPane1.setViewportView(PanelBfs);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, 270, 310));
 
-        jTextArea2.setBackground(new java.awt.Color(204, 204, 204));
-        jTextArea2.setColumns(20);
-        jTextArea2.setForeground(new java.awt.Color(0, 0, 0));
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        panelDfs.setBackground(new java.awt.Color(204, 204, 204));
+        panelDfs.setColumns(20);
+        panelDfs.setForeground(new java.awt.Color(0, 0, 0));
+        panelDfs.setRows(5);
+        jScrollPane2.setViewportView(panelDfs);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 270, 310));
 
         jLabel2.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("BFS");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Agency FB", 0, 48)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setText("Reporte de stock");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, -1, -1));
 
-        jButton1.setText("Solicitar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        volver.setText("Volver a Menu");
+        volver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                volverMouseClicked(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, -1, -1));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Liz\\Desktop\\carita.png")); // NOI18N
+        volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volverActionPerformed(evt);
+            }
+        });
+        jPanel1.add(volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 40, -1, -1));
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 470, -1, -1));
+
+        solicitar.setText("Solicitar");
+        solicitar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                solicitarMouseClicked(evt);
+            }
+        });
+        solicitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                solicitarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(solicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_volverActionPerformed
+
+    private void solicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solicitarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_solicitarActionPerformed
+
+    private void volverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_volverMouseClicked
+
+    private void solicitarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_solicitarMouseClicked
+        // TODO add your handling code here:   
+        Lista visitadosBfs = matriz.dfs(matriz, "A");
+        Lista visitadosDfs = matriz.dfs(matriz, "A");
+        
+        this.PanelBfs.setText(visitadosBfs.printProductos());
+        this.panelDfs.setText(visitadosDfs.printProductos());
+    }//GEN-LAST:event_solicitarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -129,7 +177,7 @@ public class ReporteStock extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextArea PanelBfs;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -137,8 +185,9 @@ public class ReporteStock extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea panelDfs;
+    private javax.swing.JButton solicitar;
+    private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 
 }

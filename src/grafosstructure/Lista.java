@@ -63,7 +63,7 @@ public class Lista {
         return "";
     }
 
-    public String printProductosDfs() {
+    public String printProductos() {
         String aux = "";
 
         NodoLista nodoAux = this.getFirst();

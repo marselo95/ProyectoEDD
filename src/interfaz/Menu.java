@@ -25,8 +25,8 @@ import interfaz.Global;
  */
 public class Menu extends javax.swing.JFrame {
     
-    ArchivoSub archivo = this.GetArchivo();
-    MatrizAdy matriz = this.CargarArchivo(archivo);
+    ArchivoSub archivo = Global.getArchivo();
+    MatrizAdy matriz = Global.getMatriz();
     
     
     /**
@@ -36,21 +36,6 @@ public class Menu extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-        Global.setMatriz(matriz);
-        Global.setArchivo(archivo);
-    }
-
-    public MatrizAdy CargarArchivo(ArchivoSub archivo) {
-        Funciones fun = new Funciones();
-        String txt = archivo.getTxt();
-        MatrizAdy matriz = fun.uploadGrafo(archivo);
-        return matriz;
-    }
-    
-    public ArchivoSub GetArchivo(){
-        Funciones fun = new Funciones();
-        ArchivoSub archivo = fun.openTxt();
-        return archivo;
     }
 
     /**
@@ -81,6 +66,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(26, 32, 58));
 
         jLabel1.setFont(new java.awt.Font("Agency FB", 0, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("¿Qué desea hacer?");
 
         ActRepo.setBackground(new java.awt.Color(204, 204, 204));
@@ -240,13 +226,7 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ActRepoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActRepoActionPerformed
-        // TODO add your handling code here:
-        Lista productos = new Lista();
-        Nodo prod = new Nodo("Laptop",10);
-        productos.insert(prod);
-        matriz.newVertice("F", productos);
-        matriz.newEdge("A", "F", 28);
-        
+        // TODO add your handling code here:    
         Funciones fun = new Funciones();
         fun.WriteTxt(Global.getMatriz(), archivo);
     }//GEN-LAST:event_ActRepoActionPerformed
@@ -289,7 +269,8 @@ public class Menu extends javax.swing.JFrame {
 
     private void BReporteStockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BReporteStockMouseClicked
         // TODO add your handling code here:
-
+        this.setVisible(true);
+        ReporteStock rs = new ReporteStock();
     }//GEN-LAST:event_BReporteStockMouseClicked
 
     private void MostrarGrafoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MostrarGrafoMouseClicked

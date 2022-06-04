@@ -36,7 +36,7 @@ public class Main {
 //        System.out.println("\n" + "Visitas con dfs:" + "\n");
 //        
 //////        Lista visitados = matriz.dfs(matriz, "A");
-//////        JOptionPane.showMessageDialog(null, visitados.printProductosDfs());
+//////        JOptionPane.showMessageDialog(null, visitados.printProductos());
         
 //        JOptionPane.showMessageDialog(null, visitados.printRecorrido());
 

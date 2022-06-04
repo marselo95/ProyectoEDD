@@ -5,6 +5,7 @@
  */
 package interfaz;
 
+import grafosstructure.ArchivoSub;
 import grafosstructure.Funciones;
 import grafosstructure.MatrizAdy;
 import java.io.BufferedReader;
@@ -27,6 +28,19 @@ public class Inicio extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+    }
+
+    public MatrizAdy CargarArchivo(ArchivoSub archivo) {
+        Funciones fun = new Funciones();
+        String txt = archivo.getTxt();
+        MatrizAdy matriz = fun.uploadGrafo(archivo);
+        return matriz;
+    }
+
+    public ArchivoSub GetArchivo() {
+        Funciones fun = new Funciones();
+        ArchivoSub archivo = fun.openTxt();
+        return archivo;
     }
 
     /**
@@ -100,6 +114,11 @@ public class Inicio extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
+        ArchivoSub archivo = this.GetArchivo();
+        MatrizAdy matriz = this.CargarArchivo(archivo);
+        Global.setMatriz(matriz);
+        Global.setArchivo(archivo);
+        
         Menu v2 = new Menu();
     }//GEN-LAST:event_jButton1MouseClicked
 
