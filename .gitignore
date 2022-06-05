@@ -11,7 +11,6 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.nar
 *.ear
@@ -23,3 +22,10 @@
 hs_err_pid*
 /nbproject/private/
 /dist/
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+/build/
+>>>>>>> Liz
+>>>>>>> f7d10c744b25a26601a74da14466113e8d395e97
