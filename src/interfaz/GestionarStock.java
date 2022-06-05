@@ -5,17 +5,26 @@
  */
 
 package interfaz;
+import grafosstructure.MatrizAdy;
+import grafosstructure.Nodo;
+import interfaz.VPedido;
+import javax.swing.JSpinner;
 
 /**
  *
  * @author Liz
  */
 public class GestionarStock extends javax.swing.JFrame {
+    
+    MatrizAdy matriz = Global.getMatriz();
+    FunGestion fg = new FunGestion();
 
     /** Creates new form GestionarStock */
     public GestionarStock() {
         initComponents();
     }
+    
+    
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -29,14 +38,15 @@ public class GestionarStock extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        nalmacen = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        nproducto = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        ncantidad = new javax.swing.JSpinner();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        RegresarMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -46,44 +56,57 @@ public class GestionarStock extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(26, 32, 58));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Agency FB", 0, 48)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Gestionar Stock");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, -1, -1));
 
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Seleccione almacén:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
 
-        jTextField1.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField1.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        nalmacen.setBackground(new java.awt.Color(204, 204, 204));
+        nalmacen.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        nalmacen.setForeground(new java.awt.Color(0, 0, 0));
+        nalmacen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                nalmacenActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 30, -1));
+        jPanel1.add(nalmacen, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 30, -1));
 
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Indique producto:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
 
-        jTextField2.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        nproducto.setBackground(new java.awt.Color(204, 204, 204));
+        nproducto.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        nproducto.setForeground(new java.awt.Color(0, 0, 0));
+        nproducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                nproductoActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 100, -1));
+        jPanel1.add(nproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 100, -1));
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Cantidad:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
-        jPanel1.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, -1, -1));
+        jPanel1.add(ncantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, -1, -1));
 
         jButton1.setText("Agregar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -99,22 +122,66 @@ public class GestionarStock extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 280, 360));
 
+        RegresarMenu.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        RegresarMenu.setText("Regresar al menú");
+        RegresarMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RegresarMenuMouseClicked(evt);
+            }
+        });
+        RegresarMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegresarMenuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(RegresarMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, 150, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void nalmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nalmacenActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_nalmacenActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void nproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nproductoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_nproductoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+
+//        Lista productos = new Lista();
+
+        String producto = this.nproducto.getText().toLowerCase();
+        int almacen = matriz.numVertice(this.nalmacen.getText().toUpperCase());
+        int cantidad = (int) ncantidad.getValue();
+        Nodo prod = fg.Comparar(matriz.verts[almacen].getData(), producto);
+        
+        if (prod != null){
+            fg.modificarInventario(cantidad, prod, 1);
+        }
+        else {
+            // Nuevo producto
+//            Nodo nuevoProducto = new Nodo(producto,ncantidad);
+//            productos.insert(nuevoProducto);
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void RegresarMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegresarMenuMouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        Menu m = new Menu();
+    }//GEN-LAST:event_RegresarMenuMouseClicked
+
+    private void RegresarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RegresarMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,6 +219,7 @@ public class GestionarStock extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton RegresarMenu;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -159,10 +227,10 @@ public class GestionarStock extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField nalmacen;
+    private javax.swing.JSpinner ncantidad;
+    private javax.swing.JTextField nproducto;
     // End of variables declaration//GEN-END:variables
 
 }

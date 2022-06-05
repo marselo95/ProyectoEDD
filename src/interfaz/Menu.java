@@ -113,6 +113,11 @@ public class Menu extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
         jButton4.setForeground(new java.awt.Color(0, 0, 0));
         jButton4.setText("Gestionar stock");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -123,6 +128,11 @@ public class Menu extends javax.swing.JFrame {
         NuevoAlmacen.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
         NuevoAlmacen.setForeground(new java.awt.Color(0, 0, 0));
         NuevoAlmacen.setText("Nuevo almacén");
+        NuevoAlmacen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                NuevoAlmacenMouseClicked(evt);
+            }
+        });
         NuevoAlmacen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NuevoAlmacenActionPerformed(evt);
@@ -148,6 +158,11 @@ public class Menu extends javax.swing.JFrame {
         jButton7.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
         jButton7.setForeground(new java.awt.Color(0, 0, 0));
         jButton7.setText("Nuevo camino grafo");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -195,7 +210,10 @@ public class Menu extends javax.swing.JFrame {
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(247, 247, 247)
                         .add(MostrarGrafo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 190, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addContainerGap(104, Short.MAX_VALUE))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                .add(0, 0, Short.MAX_VALUE)
+                .add(jButton9, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 45, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -226,7 +244,7 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ActRepoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActRepoActionPerformed
-        // TODO add your handling code here:    
+        // TODO add your handling code here:   
         Funciones fun = new Funciones();
         fun.WriteTxt(Global.getMatriz(), archivo);
     }//GEN-LAST:event_ActRepoActionPerformed
@@ -238,6 +256,8 @@ public class Menu extends javax.swing.JFrame {
 
     private void BReporteStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BReporteStockActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
+        ReporteStock rs = new ReporteStock();
     }//GEN-LAST:event_BReporteStockActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -287,6 +307,33 @@ public class Menu extends javax.swing.JFrame {
         VPedido vp = new VPedido();
         
     }//GEN-LAST:event_RealizarPedidoMouseClicked
+
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        // TODO add your handling code here:
+        // NUEVO CAMINO
+        try{       
+        String a = JOptionPane.showInputDialog(null,"Ingrese primer vertice").toUpperCase();
+        String b = JOptionPane.showInputDialog(null,"Ingrese segundo vertice").toUpperCase();
+        int peso = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese peso del camino (km)"));
+        matriz.newEdge(a,b,peso);
+        JOptionPane.showMessageDialog(null, "Se ha agregado un nuevo camino");   
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(null,"Datos invalidos...");      
+        }
+    }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        GestionarStock gs = new GestionarStock();
+        
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void NuevoAlmacenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NuevoAlmacenMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_NuevoAlmacenMouseClicked
 
     /**
      * @param args the command line arguments

@@ -22,6 +22,7 @@ import javax.swing.JOptionPane;
 public class VPedido extends javax.swing.JFrame {
     MatrizAdy matriz = Global.getMatriz();
     ArchivoSub archivo = Global.getArchivo();
+    FunGestion fg = new FunGestion();
     /**
      * Creates new form VPedido
      */
@@ -75,22 +76,40 @@ public class VPedido extends javax.swing.JFrame {
         icantidad = new javax.swing.JSpinner();
         Pedido = new javax.swing.JButton();
         infoDfs = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(26, 32, 58));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setBackground(java.awt.Color.white);
         jLabel1.setFont(new java.awt.Font("Agency FB", 0, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Pedidos");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, -1, -1));
 
         RegresarMenu.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         RegresarMenu.setText("Regresar al menú");
-        jPanel1.add(RegresarMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, 150, -1));
+        RegresarMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RegresarMenuMouseClicked(evt);
+            }
+        });
+        RegresarMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegresarMenuActionPerformed(evt);
+            }
+        });
+        jPanel1.add(RegresarMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, 150, -1));
 
+        jLabel3.setBackground(java.awt.Color.white);
         jLabel3.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Seleccione almacén:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
@@ -114,11 +133,15 @@ public class VPedido extends javax.swing.JFrame {
         });
         jPanel1.add(iproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 100, -1));
 
+        jLabel4.setBackground(java.awt.Color.white);
         jLabel4.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Indique producto:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
+        jLabel2.setBackground(java.awt.Color.white);
         jLabel2.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Cantidad:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
         jPanel1.add(icantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
@@ -136,6 +159,18 @@ public class VPedido extends javax.swing.JFrame {
         });
         jPanel1.add(Pedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 120, -1));
         jPanel1.add(infoDfs, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 170, 80));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 330, 300));
+
+        jLabel5.setBackground(java.awt.Color.white);
+        jLabel5.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Stock disponible");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 500));
 
@@ -156,13 +191,34 @@ public class VPedido extends javax.swing.JFrame {
 
     private void PedidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PedidoMouseClicked
         // TODO add your handling code here:
-        MatrizAdy matriz = this.gatMatrizAdy();
+        // Realizar pedido 
 
         String Producto = this.iproducto.getText().toLowerCase();
         int almacen = matriz.numVertice(this.ialmacen.getText().toUpperCase());
-        JSpinner cantidad = icantidad;
+        int cantidad = (int) icantidad.getValue();
+        Nodo prod = fg.Comparar(matriz.verts[almacen].getData(), Producto);
+        
+        if (prod != null){
+            fg.modificarInventario(cantidad, prod, 0);
+        }
+        else {
+            // Pedidos a otro almacen
+            JOptionPane.showMessageDialog(null, "Producto no disponible");
+        }
+        
+        
         
     }//GEN-LAST:event_PedidoMouseClicked
+
+    private void RegresarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RegresarMenuActionPerformed
+
+    private void RegresarMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegresarMenuMouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+        Menu v2 = new Menu();
+    }//GEN-LAST:event_RegresarMenuMouseClicked
 
     /**
      * @param args the command line arguments
@@ -210,7 +266,10 @@ public class VPedido extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 
 }
