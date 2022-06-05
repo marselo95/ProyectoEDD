@@ -21,18 +21,19 @@ import javax.swing.JOptionPane;
  */
 public class VPedido extends javax.swing.JFrame {
 
-    MatrizAdy matriz = Global.getMatriz();
+    MatrizAdy matriz;
     ArchivoSub archivo = Global.getArchivo();
     FunGestion fg = new FunGestion();
 
     /**
      * Creates new form VPedido
      */
-    public VPedido() {
+    public VPedido(MatrizAdy mat) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-        this.panel.setText(Global.getMatriz().bfs(Global.getMatriz(), "A").printProductos());
+        this.matriz = mat;
+        this.panel.setText(mat.dfs(mat, "A").printProductos());
     }
 
     /**
@@ -200,7 +201,7 @@ public class VPedido extends javax.swing.JFrame {
                 ///////////// Aqui va solicitar a otro almacen
             } else {
                 Global.setMatriz(mat);
-                this.panel.setText(Global.getMatriz().bfs(Global.getMatriz(), "A").printProductos());
+                this.panel.setText(matriz.dfs(matriz, "A").printProductos());
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error, ingrese los datos nuevamente");
@@ -213,6 +214,7 @@ public class VPedido extends javax.swing.JFrame {
 
     private void RegresarMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegresarMenuMouseClicked
         // TODO add your handling code here:
+        Global.setMatriz(matriz);
         this.setVisible(false);
         Menu v2 = new Menu();
     }//GEN-LAST:event_RegresarMenuMouseClicked
@@ -247,7 +249,7 @@ public class VPedido extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VPedido().setVisible(true);
+                new VPedido(Global.getMatriz()).setVisible(true);
             }
         });
     }

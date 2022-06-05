@@ -40,7 +40,7 @@ public class Menu extends javax.swing.JFrame {
     
     public void nuevaArista(String a){
         try{       
-        String b = JOptionPane.showInputDialog(null,"Ingrese el almacen a conectar").toUpperCase();
+        String b = JOptionPane.showInputDialog(null,"Ingrese un almacen a conectar").toUpperCase();
         int peso = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese el peso del camino (km)"));
         
         Global.getMatriz().newEdge(a, b, peso);
@@ -315,7 +315,7 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         this.setVisible(false);
-        VPedido vp = new VPedido();
+        VPedido vp = new VPedido(Global.getMatriz());
         
     }//GEN-LAST:event_RealizarPedidoMouseClicked
 
@@ -338,7 +338,7 @@ public class Menu extends javax.swing.JFrame {
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
-        GestionarStock gs = new GestionarStock(); 
+        GestionarStock gs = new GestionarStock(Global.getMatriz()); 
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void NuevoAlmacenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NuevoAlmacenMouseClicked

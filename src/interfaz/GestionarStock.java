@@ -17,17 +17,18 @@ import javax.swing.JSpinner;
  */
 public class GestionarStock extends javax.swing.JFrame {
 
-    MatrizAdy matriz = Global.getMatriz();
+    MatrizAdy matriz;
     FunGestion fg = new FunGestion();
 
     /**
      * Creates new form GestionarStock
      */
-    public GestionarStock() {
+    public GestionarStock(MatrizAdy mat) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-        this.panel.setText(Global.getMatriz().bfs(Global.getMatriz(), "A").printProductos());
+        this.matriz = mat;
+        this.panel.setText(mat.dfs(mat, "A").printProductos());
     }
 
     /**
@@ -173,10 +174,11 @@ public class GestionarStock extends javax.swing.JFrame {
                 ///////////// Aqui se agrega
                 Nodo prod = new Nodo(producto,cantidad);
                 Global.getMatriz().verts[almacen].getData().insert(prod);
-                this.panel.setText(Global.getMatriz().bfs(Global.getMatriz(), "A").printProductos());
+                this.panel.setText(matriz.dfs(matriz, "A").printProductos());
+                JOptionPane.showMessageDialog(null, "Producto agregado con exito");
             } else {
                 Global.setMatriz(mat);
-                this.panel.setText(Global.getMatriz().bfs(Global.getMatriz(), "A").printProductos());
+                this.panel.setText(matriz.dfs(matriz, "A").printProductos());
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error, ingrese los datos nuevamente");
@@ -189,6 +191,7 @@ public class GestionarStock extends javax.swing.JFrame {
 
     private void RegresarMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegresarMenuMouseClicked
         // TODO add your handling code here:
+        Global.setMatriz(matriz);
         this.setVisible(false);
         Menu m = new Menu();
     }//GEN-LAST:event_RegresarMenuMouseClicked
@@ -227,7 +230,7 @@ public class GestionarStock extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GestionarStock().setVisible(true);
+                new GestionarStock(Global.getMatriz()).setVisible(true);
             }
         });
     }

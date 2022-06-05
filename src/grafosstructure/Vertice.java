@@ -13,6 +13,7 @@ public class Vertice {
 
     public Vertice(String name) {
         this.name = name;
+        this.data = new Lista();
         numVertice = -1;
         this.fueVisitado = false;
     }

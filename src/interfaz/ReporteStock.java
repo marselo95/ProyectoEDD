@@ -137,7 +137,7 @@ public class ReporteStock extends javax.swing.JFrame {
         Lista visitadosBfs = matriz.bfs(matriz, "A");
         Lista visitadosDfs = matriz.dfs(matriz, "A");
         
-        this.PanelBfs.setText(visitadosBfs.printProductos());
+        this.PanelBfs.setText(visitadosDfs.printProductos());
         this.panelDfs.setText(visitadosDfs.printProductos());
     }//GEN-LAST:event_solicitarMouseClicked
 

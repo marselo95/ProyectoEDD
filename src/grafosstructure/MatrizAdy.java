@@ -49,7 +49,7 @@ public class MatrizAdy {
             JOptionPane.showMessageDialog(null, "El vertice ya existe");
         }
     }
-    
+
     public void verticeSolo(String nom) {
         boolean esta = numVertice(nom) >= 0;
         if (!esta) {
@@ -139,7 +139,7 @@ public class MatrizAdy {
                 }
 
             }
-            for (int i = 0; i < mat.getNumVerts(); i++) {
+            for (int i = 0; i < mat.numVerts; i++) {
                 if (!mat.verts[i].isFueVisitado()) {
                     dfs(mat, mat.verts[i].getName());
                 }
