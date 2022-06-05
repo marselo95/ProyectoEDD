@@ -5,6 +5,7 @@
 package interfaz;
 
 import grafosstructure.Lista;
+import grafosstructure.MatrizAdy;
 import grafosstructure.Nodo;
 
 /**
@@ -12,7 +13,7 @@ import grafosstructure.Nodo;
  * @author Juan
  */
 public class FunGestion {
-    
+
     public void modificarInventario(int cantidad, Nodo producto, int opcion) {
         if (opcion == 1) {
             producto.setExistencias(producto.getExistencias() + cantidad);
@@ -21,11 +22,16 @@ public class FunGestion {
         }
     }
 
-    public Nodo Comparar(Lista productos, String producto) {
+    public MatrizAdy modificarExistencias(Lista productos, String producto, int cantidad, int opcion, MatrizAdy matriz) {
         Nodo aux = productos.getpFirst();
-        while (aux != null){
-            if (producto.equals(aux.getNombre())) {
-                return aux;
+        while (aux != null) {
+            if (producto.equals(aux.getNombre().toLowerCase())) {
+                if (opcion == 1) {
+                    aux.setExistencias(aux.getExistencias() + cantidad);
+                } else {
+                    aux.setExistencias(aux.getExistencias() - cantidad);
+                }
+                return matriz;
             }
             aux = aux.getNext();
         }

@@ -37,6 +37,19 @@ public class Menu extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
+    
+    public void nuevaArista(String a){
+        try{       
+        String b = JOptionPane.showInputDialog(null,"Ingrese el almacen a conectar").toUpperCase();
+        int peso = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese el peso del camino (km)"));
+        
+        Global.getMatriz().newEdge(a, b, peso);
+        JOptionPane.showMessageDialog(null, "Se ha agregado un nuevo camino"); 
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(null,"Datos invalidos...");      
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -65,8 +78,9 @@ public class Menu extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(26, 32, 58));
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Agency FB", 0, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("¿Qué desea hacer?");
 
         ActRepo.setBackground(new java.awt.Color(204, 204, 204));
@@ -211,9 +225,6 @@ public class Menu extends javax.swing.JFrame {
                         .add(247, 247, 247)
                         .add(MostrarGrafo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 190, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(104, Short.MAX_VALUE))
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                .add(0, 0, Short.MAX_VALUE)
-                .add(jButton9, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 45, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -251,7 +262,6 @@ public class Menu extends javax.swing.JFrame {
 
     private void RealizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RealizarPedidoActionPerformed
         // TODO add your handling code here:
-        Global.setMatriz(matriz);
     }//GEN-LAST:event_RealizarPedidoActionPerformed
 
     private void BReporteStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BReporteStockActionPerformed
@@ -303,6 +313,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void RealizarPedidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RealizarPedidoMouseClicked
         // TODO add your handling code here:
+        
         this.setVisible(false);
         VPedido vp = new VPedido();
         
@@ -312,11 +323,12 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         // NUEVO CAMINO
         try{       
-        String a = JOptionPane.showInputDialog(null,"Ingrese primer vertice").toUpperCase();
-        String b = JOptionPane.showInputDialog(null,"Ingrese segundo vertice").toUpperCase();
-        int peso = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese peso del camino (km)"));
-        matriz.newEdge(a,b,peso);
-        JOptionPane.showMessageDialog(null, "Se ha agregado un nuevo camino");   
+        String a = JOptionPane.showInputDialog(null,"Ingrese primer almacen").toUpperCase();
+        this.nuevaArista(a);
+//        String b = JOptionPane.showInputDialog(null,"Ingrese segundo vertice").toUpperCase();
+//        int peso = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese peso del camino (km)"));
+//        matriz.newEdge(a,b,peso);
+//        JOptionPane.showMessageDialog(null, "Se ha agregado un nuevo camino");   
         }
         catch (Exception e){
             JOptionPane.showMessageDialog(null,"Datos invalidos...");      
@@ -326,13 +338,20 @@ public class Menu extends javax.swing.JFrame {
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
-        GestionarStock gs = new GestionarStock();
-        
+        GestionarStock gs = new GestionarStock(); 
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void NuevoAlmacenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NuevoAlmacenMouseClicked
         // TODO add your handling code here:
-        
+        try{       
+        String a = JOptionPane.showInputDialog(null,"Ingrese el nombre del nuevo almacen").toUpperCase();
+        Global.getMatriz().verticeSolo(a);
+        this.nuevaArista(a);
+        this.nuevaArista(a);
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(null,"Datos invalidos...");      
+        }
     }//GEN-LAST:event_NuevoAlmacenMouseClicked
 
     /**

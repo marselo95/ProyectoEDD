@@ -49,6 +49,17 @@ public class MatrizAdy {
             JOptionPane.showMessageDialog(null, "El vertice ya existe");
         }
     }
+    
+    public void verticeSolo(String nom) {
+        boolean esta = numVertice(nom) >= 0;
+        if (!esta) {
+            Vertice v = new Vertice(nom);
+            v.setNumVertice(getNumVerts());
+            verts[numVerts++] = v;
+        } else {
+            JOptionPane.showMessageDialog(null, "El vertice ya existe");
+        }
+    }
 
     public void newEdge(String a, String b, int peso) {
         int va,
