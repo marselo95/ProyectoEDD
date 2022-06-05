@@ -258,13 +258,7 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ActRepoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActRepoActionPerformed
-        // TODO add your handling code here:
-        Lista productos = new Lista();
-        Nodo prod = new Nodo("Laptop",10);
-        productos.insert(prod);
-        matriz.newVertice("F", productos);
-        matriz.newEdge("A", "F", 28);
-        
+        // TODO add your handling code here:   
         Funciones fun = new Funciones();
         fun.WriteTxt(Global.getMatriz(), archivo);
     }//GEN-LAST:event_ActRepoActionPerformed
@@ -276,6 +270,8 @@ public class Menu extends javax.swing.JFrame {
 
     private void BReporteStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BReporteStockActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
+        ReporteStock rs = new ReporteStock();
     }//GEN-LAST:event_BReporteStockActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

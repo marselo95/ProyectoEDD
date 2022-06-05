@@ -5,13 +5,19 @@
  */
 
 package interfaz;
+import grafosstructure.MatrizAdy;
+import grafosstructure.Nodo;
 import interfaz.VPedido;
+import javax.swing.JSpinner;
 
 /**
  *
  * @author Liz
  */
 public class GestionarStock extends javax.swing.JFrame {
+    
+    MatrizAdy matriz = Global.getMatriz();
+    FunGestion fg = new FunGestion();
 
     /** Creates new form GestionarStock */
     public GestionarStock() {
@@ -149,15 +155,16 @@ public class GestionarStock extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        MatrizAdy matriz = this.getMatrizAdy();
+
 //        Lista productos = new Lista();
 
         String producto = this.nproducto.getText().toLowerCase();
         int almacen = matriz.numVertice(this.nalmacen.getText().toUpperCase());
-        JSpinner cantidad = ncantidad;
+        int cantidad = (int) ncantidad.getValue();
+        Nodo prod = fg.Comparar(matriz.verts[almacen].getData(), producto);
         
-        if (Comparar(matAd.verts[almacen].getData(), Producto) != null){
-            modificarInventario(cantidad, aux, 1);
+        if (prod != null){
+            fg.modificarInventario(cantidad, prod, 1);
         }
         else {
             // Nuevo producto
@@ -169,7 +176,7 @@ public class GestionarStock extends javax.swing.JFrame {
     private void RegresarMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegresarMenuMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
-        Menu.setVisible(true);
+        Menu m = new Menu();
     }//GEN-LAST:event_RegresarMenuMouseClicked
 
     private void RegresarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarMenuActionPerformed

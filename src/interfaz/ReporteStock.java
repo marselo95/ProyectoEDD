@@ -15,6 +15,8 @@ public class ReporteStock extends javax.swing.JFrame {
     /** Creates new form ReporteStock */
     public ReporteStock() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
     }
 
     /** This method is called from within the constructor to
@@ -109,7 +111,7 @@ public class ReporteStock extends javax.swing.JFrame {
     private void RegresarMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegresarMenuMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
-        Menu.setVisible(true);
+        Menu m = new Menu();
     }//GEN-LAST:event_RegresarMenuMouseClicked
 
     private void RegresarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarMenuActionPerformed
