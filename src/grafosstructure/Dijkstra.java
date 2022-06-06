@@ -16,14 +16,14 @@ public class Dijkstra {
     private final boolean [] F;
     private final int s;
     private final int n;
-    
+
     public Dijkstra(Grafo gp, int origen) {
-        n = gp.getNumVerts();
-        s = origen;
-        Pesos = gp.matAd;
-        ultimo = new int [n];
-        D = new int [n];
-        F = new boolean [n];
+        n = gp.getNumVerts();   // numero de vertices
+        s = origen;             // vertice origen
+        Pesos = gp.matAd;       // Matriz de Adyacencia (pesos)
+        ultimo = new int [n];   // ultimo vertice en el camino
+        D = new int [n];        // Coste minimo
+        F = new boolean [n];    // conjunto de vertices
     }
     
     public void caminoMinimos() {

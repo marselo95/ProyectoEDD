@@ -15,6 +15,7 @@ import grafosstructure.Grafo;
 public class Global {
     private static Grafo matriz = null;
     private static ArchivoSub archivo;
+    private static int pendientes = 0;
 
     /**
      * @return the matriz
@@ -36,6 +37,20 @@ public class Global {
 
     public static void setArchivo(ArchivoSub archivo) {
         Global.archivo = archivo;
+    }
+
+    /**
+     * @return the pendientes
+     */
+    public static int getPendientes() {
+        return pendientes;
+    }
+
+    /**
+     * @param aPendientes the pendientes to set
+     */
+    public static void setPendientes(int aPendientes) {
+        pendientes = aPendientes;
     }
     
 }

@@ -7,6 +7,8 @@ package interfaz;
 import grafosstructure.Lista;
 import grafosstructure.Grafo;
 import grafosstructure.Nodo;
+import grafosstructure.Vertice;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,12 +31,37 @@ public class FunGestion {
                 if (opcion == 1) {
                     aux.setExistencias(aux.getExistencias() + cantidad);
                 } else {
-                    aux.setExistencias(aux.getExistencias() - cantidad);
+                    if (cantidad > aux.getExistencias()) {
+                        aux.setExistencias(0);
+                        int pend = cantidad - aux.getExistencias();
+                        Global.setPendientes(pend);
+                        JOptionPane.showMessageDialog(null, "Existencias insuficientes, solicitando a otro almacen");
+                    } else {
+                        aux.setExistencias(aux.getExistencias() - cantidad);
+                    }
                 }
                 return matriz;
             }
             aux = aux.getNext();
         }
         return null;
+    }
+
+    public Lista almacenesDisponibles(Vertice[] vertices, String producto, String almacen) {
+        Lista almacenesProducto = new Lista();
+        for (int i = 0; i < vertices.length; i++) {
+            if (vertices[i].getName().toUpperCase().equals(almacen)) {
+                continue;
+            }
+            Lista productos = vertices[i].getData();
+            Nodo aux = productos.getpFirst();
+            while (aux != null) {
+                if (producto.equals(aux.getNombre().toLowerCase())) {
+                    almacenesProducto.insert(aux);
+                }
+            }
+
+        }
+        return almacenesProducto;
     }
 }
