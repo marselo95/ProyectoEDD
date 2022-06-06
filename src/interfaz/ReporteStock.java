@@ -8,7 +8,7 @@ package interfaz;
 
 import grafosstructure.Funciones;
 import grafosstructure.Lista;
-import grafosstructure.MatrizAdy;
+import grafosstructure.Grafo;
 import grafosstructure.Nodo;
 
 /**
@@ -17,7 +17,7 @@ import grafosstructure.Nodo;
  */
 public class ReporteStock extends javax.swing.JFrame {
     
-    MatrizAdy matriz = Global.getMatriz();
+    Grafo matriz = Global.getMatriz();
 
     /** Creates new form ReporteStock */
     public ReporteStock() {

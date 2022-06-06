@@ -8,7 +8,7 @@ package interfaz;
 import grafosstructure.ArchivoSub;
 import grafosstructure.Funciones;
 import grafosstructure.Lista;
-import grafosstructure.MatrizAdy;
+import grafosstructure.Grafo;
 import grafosstructure.Nodo;
 import java.io.BufferedReader;
 import java.io.File;
@@ -26,7 +26,7 @@ import interfaz.Global;
 public class Menu extends javax.swing.JFrame {
     
     ArchivoSub archivo = Global.getArchivo();
-    MatrizAdy matriz = Global.getMatriz();
+    Grafo matriz = Global.getMatriz();
     
     
     /**

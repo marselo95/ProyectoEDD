@@ -2,18 +2,18 @@ package grafosstructure;
 
 import javax.swing.JOptionPane;
 
-public class MatrizAdy {
+public class Grafo {
 
     private int numVerts;
     static int maxVerts = 12;
     public Vertice[] verts;
     int[][] matAd;
 
-    public MatrizAdy() {
+    public Grafo() {
         this(maxVerts);
     }
 
-    public MatrizAdy(int mx) {
+    public Grafo(int mx) {
         this.matAd = new int[mx][mx];
         this.verts = new Vertice[mx];
         for (int i = 0; i < mx; i++) {
@@ -83,7 +83,7 @@ public class MatrizAdy {
         }
     }
 
-    public Lista bfs(MatrizAdy mat, String name) {
+    public Lista bfs(Grafo mat, String name) {
         int w, v;
         int clave = 100;
         int[] m;
@@ -118,7 +118,7 @@ public class MatrizAdy {
         }
     }
 
-    public Lista dfs(MatrizAdy mat, String name) {
+    public Lista dfs(Grafo mat, String name) {
         Lista vis = new Lista();
         int v = mat.numVertice(name);
 

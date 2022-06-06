@@ -12,7 +12,7 @@ import grafosstructure.ArchivoSub;
 
 public class Funciones {
 
-    public MatrizAdy readTxt(ArchivoSub archivo) {
+    public Grafo readTxt(ArchivoSub archivo) {
         String line;
         String txt = "";
         String path = "test\\av.txt";
@@ -62,8 +62,8 @@ public class Funciones {
         return archivo;
     }
 
-    public MatrizAdy uploadGrafo(ArchivoSub archivo) {
-        MatrizAdy matriz = new MatrizAdy();
+    public Grafo uploadGrafo(ArchivoSub archivo) {
+        Grafo matriz = new Grafo();
         String txt = archivo.getTxt();
         try {
 
@@ -117,7 +117,7 @@ public class Funciones {
         }
     }
 
-    public Graph Graphic(MatrizAdy matriz) {
+    public Graph Graphic(Grafo matriz) {
         String styleSheet = "node { stroke-mode: plain; fill-color: purple;shape: circle;size-mode: fit;text-size:22.5; padding: 8px, 12px;}edge {padding: 8px, 12px; arrow-shape: arrow; text-size:18; arrow-size: 6px, 6px;}";
 
         Graph graph = new SingleGraph("Grafo", false, true);
@@ -141,7 +141,7 @@ public class Funciones {
         return graph;
     }
 
-    public void WriteTxt(MatrizAdy matriz, ArchivoSub archivo) {
+    public void WriteTxt(Grafo matriz, ArchivoSub archivo) {
         String grafoActualizado = "";
         Lista visitados = matriz.bfs(matriz, "A");
 

@@ -9,13 +9,13 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         Funciones fun = new Funciones();
-//        MatrizAdy matriz;
+//        Grafo matriz;
 
-//        MatrizAdy matriz = fun.readTxt();
+//        Grafo matriz = fun.readTxt();
         
         ArchivoSub archivo = fun.openTxt();
         String txt = archivo.getTxt();
-        MatrizAdy matriz = fun.uploadGrafo(archivo);
+        Grafo matriz = fun.uploadGrafo(archivo);
         
         Lista productos = new Lista();
         Nodo prod = new Nodo("Laptop",10);
@@ -43,7 +43,7 @@ public class Main {
 
 //        ArchivoSub archivo = fun.openTxt();
 //        String txt = archivo.getTxt();
-//        MatrizAdy matriz = fun.uploadGrafo(txt);
+//        Grafo matriz = fun.uploadGrafo(txt);
 //        System.out.println(archivo.getFile().getCurrentDirectory());
 //////        Graph graph = fun.Graphic(matriz);
 //////      

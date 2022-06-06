@@ -7,7 +7,7 @@ package interfaz;
 
 import grafosstructure.ArchivoSub;
 import grafosstructure.Funciones;
-import grafosstructure.MatrizAdy;
+import grafosstructure.Grafo;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -30,10 +30,10 @@ public class Inicio extends javax.swing.JFrame {
         this.setVisible(true);
     }
 
-    public MatrizAdy CargarArchivo(ArchivoSub archivo) {
+    public Grafo CargarArchivo(ArchivoSub archivo) {
         Funciones fun = new Funciones();
         String txt = archivo.getTxt();
-        MatrizAdy matriz = fun.uploadGrafo(archivo);
+        Grafo matriz = fun.uploadGrafo(archivo);
         return matriz;
     }
 
@@ -115,7 +115,7 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setVisible(false);
         ArchivoSub archivo = this.GetArchivo();
-        MatrizAdy matriz = this.CargarArchivo(archivo);
+        Grafo matriz = this.CargarArchivo(archivo);
         Global.setMatriz(matriz);
         Global.setArchivo(archivo);
         

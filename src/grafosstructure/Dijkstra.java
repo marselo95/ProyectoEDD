@@ -17,7 +17,7 @@ public class Dijkstra {
     private final int s;
     private final int n;
     
-    public Dijkstra(MatrizAdy gp, int origen) {
+    public Dijkstra(Grafo gp, int origen) {
         n = gp.getNumVerts();
         s = origen;
         Pesos = gp.matAd;

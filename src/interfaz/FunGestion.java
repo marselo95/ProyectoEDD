@@ -5,7 +5,7 @@
 package interfaz;
 
 import grafosstructure.Lista;
-import grafosstructure.MatrizAdy;
+import grafosstructure.Grafo;
 import grafosstructure.Nodo;
 
 /**
@@ -22,7 +22,7 @@ public class FunGestion {
         }
     }
 
-    public MatrizAdy modificarExistencias(Lista productos, String producto, int cantidad, int opcion, MatrizAdy matriz) {
+    public Grafo modificarExistencias(Lista productos, String producto, int cantidad, int opcion, Grafo matriz) {
         Nodo aux = productos.getpFirst();
         while (aux != null) {
             if (producto.equals(aux.getNombre().toLowerCase())) {

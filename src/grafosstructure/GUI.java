@@ -16,7 +16,7 @@ public class GUI extends javax.swing.JFrame {
 
     Funciones fun = new Funciones();
     String txt = fun.openTxt().getTxt();
-    MatrizAdy matriz = fun.uploadGrafo(Global.getArchivo());
+    Grafo matriz = fun.uploadGrafo(Global.getArchivo());
     Graph graph = fun.Graphic(matriz);
     
     

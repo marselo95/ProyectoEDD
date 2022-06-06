@@ -6,27 +6,27 @@ package interfaz;
 
 import grafosstructure.ArchivoSub;
 import grafosstructure.Funciones;
-import grafosstructure.MatrizAdy;
+import grafosstructure.Grafo;
 
 /**
  *
  * @author Juan
  */
 public class Global {
-    private static MatrizAdy matriz = null;
+    private static Grafo matriz = null;
     private static ArchivoSub archivo;
 
     /**
      * @return the matriz
      */
-    public static MatrizAdy getMatriz() {
+    public static Grafo getMatriz() {
         return matriz;
     }
 
     /**
      * @param aMatriz the matriz to set
      */
-    public static void setMatriz(MatrizAdy aMatriz) {
+    public static void setMatriz(Grafo aMatriz) {
         matriz = aMatriz;
     }
 

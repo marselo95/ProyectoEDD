@@ -7,7 +7,7 @@ package interfaz;
 
 import grafosstructure.ArchivoSub;
 import grafosstructure.Lista;
-import grafosstructure.MatrizAdy;
+import grafosstructure.Grafo;
 import grafosstructure.Nodo;
 import grafosstructure.Funciones;
 import grafosstructure.Vertice;
@@ -21,14 +21,14 @@ import javax.swing.JOptionPane;
  */
 public class VPedido extends javax.swing.JFrame {
 
-    MatrizAdy matriz;
+    Grafo matriz;
     ArchivoSub archivo = Global.getArchivo();
     FunGestion fg = new FunGestion();
 
     /**
      * Creates new form VPedido
      */
-    public VPedido(MatrizAdy mat) {
+    public VPedido(Grafo mat) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
@@ -194,7 +194,7 @@ public class VPedido extends javax.swing.JFrame {
             int almacen = Global.getMatriz().numVertice(this.ialmacen.getText().toUpperCase());
             int cantidad = (int) icantidad.getValue();
 
-            MatrizAdy mat = fg.modificarExistencias(Global.getMatriz().verts[almacen].getData(), Producto, cantidad, 0, Global.getMatriz());
+            Grafo mat = fg.modificarExistencias(Global.getMatriz().verts[almacen].getData(), Producto, cantidad, 0, Global.getMatriz());
 
             if (mat == null) {
                 JOptionPane.showMessageDialog(null, "El producto no esta disponible o no existe");

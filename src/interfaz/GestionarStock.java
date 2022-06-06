@@ -5,7 +5,7 @@
  */
 package interfaz;
 
-import grafosstructure.MatrizAdy;
+import grafosstructure.Grafo;
 import grafosstructure.Nodo;
 import interfaz.VPedido;
 import javax.swing.JOptionPane;
@@ -17,13 +17,13 @@ import javax.swing.JSpinner;
  */
 public class GestionarStock extends javax.swing.JFrame {
 
-    MatrizAdy matriz;
+    Grafo matriz;
     FunGestion fg = new FunGestion();
 
     /**
      * Creates new form GestionarStock
      */
-    public GestionarStock(MatrizAdy mat) {
+    public GestionarStock(Grafo mat) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
@@ -168,7 +168,7 @@ public class GestionarStock extends javax.swing.JFrame {
             int almacen = Global.getMatriz().numVertice(this.nalmacen.getText().toUpperCase());
             int cantidad = (int) ncantidad.getValue();
 
-            MatrizAdy mat = fg.modificarExistencias(Global.getMatriz().verts[almacen].getData(), producto, cantidad, 1, matriz);
+            Grafo mat = fg.modificarExistencias(Global.getMatriz().verts[almacen].getData(), producto, cantidad, 1, matriz);
 
             if (mat == null) {
                 ///////////// Aqui se agrega
