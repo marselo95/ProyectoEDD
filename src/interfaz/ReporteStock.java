@@ -134,10 +134,10 @@ public class ReporteStock extends javax.swing.JFrame {
 
     private void solicitarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_solicitarMouseClicked
         // TODO add your handling code here:   
-        Lista visitadosBfs = matriz.bfs(matriz, "A");
-        Lista visitadosDfs = matriz.dfs(matriz, "A");
+        Lista visitadosBfs = matriz.bfs(matriz, matriz.verts[0].getName());
+        Lista visitadosDfs = matriz.dfs(matriz, matriz.verts[0].getName());
         
-        this.PanelBfs.setText(visitadosDfs.printProductos());
+        this.PanelBfs.setText(visitadosBfs.printProductos());
         this.panelDfs.setText(visitadosDfs.printProductos());
     }//GEN-LAST:event_solicitarMouseClicked
 

@@ -143,7 +143,7 @@ public class Funciones {
 
     public void WriteTxt(Grafo matriz, ArchivoSub archivo) {
         String grafoActualizado = "";
-        Lista visitados = matriz.bfs(matriz, "A");
+        Lista visitados = matriz.dfs(matriz, matriz.verts[0].getName());
 
         if (matriz.getNumVerts() != 0) {
             //acceder matady y escribir txt
@@ -151,7 +151,10 @@ public class Funciones {
             for (int i = 0; i < visitados.getSize(); i++) {
                 grafoActualizado += "\n" + "Almacen" + " " + matriz.verts[i].getName() + ":";
                 Lista productos = matriz.verts[i].getData();
-                grafoActualizado += this.printProductos(productos);
+                if(productos != null){
+                    grafoActualizado += this.printProductos(productos);
+                }
+
             }
             grafoActualizado += "\n" + "Rutas;";
             int[][] matAdy = matriz.matAd;

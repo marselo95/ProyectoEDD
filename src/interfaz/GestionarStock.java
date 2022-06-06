@@ -28,7 +28,7 @@ public class GestionarStock extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.matriz = mat;
-        this.panel.setText(mat.dfs(mat, "A").printProductos());
+        this.panel.setText(mat.dfs(mat, matriz.verts[0].getName()).printProductos());
     }
 
     /**
@@ -174,11 +174,11 @@ public class GestionarStock extends javax.swing.JFrame {
                 ///////////// Aqui se agrega
                 Nodo prod = new Nodo(producto,cantidad);
                 Global.getMatriz().verts[almacen].getData().insert(prod);
-                this.panel.setText(matriz.dfs(matriz, "A").printProductos());
+                this.panel.setText(matriz.dfs(matriz, matriz.verts[0].getName()).printProductos());
                 JOptionPane.showMessageDialog(null, "Producto agregado con exito");
             } else {
                 Global.setMatriz(mat);
-                this.panel.setText(matriz.dfs(matriz, "A").printProductos());
+                this.panel.setText(matriz.dfs(matriz, matriz.verts[0].getName()).printProductos());
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error, ingrese los datos nuevamente");

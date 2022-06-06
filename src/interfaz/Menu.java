@@ -18,17 +18,17 @@ import java.io.PrintWriter;
 import javax.swing.JOptionPane;
 import org.graphstream.graph.Graph;
 import interfaz.Global;
+import org.graphstream.ui.view.Viewer;
 
 /**
  *
  * @author Liz
  */
 public class Menu extends javax.swing.JFrame {
-    
+
     ArchivoSub archivo = Global.getArchivo();
     Grafo matriz = Global.getMatriz();
-    
-    
+
     /**
      * Creates new form Menu
      */
@@ -37,17 +37,16 @@ public class Menu extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
-    
-    public void nuevaArista(String a){
-        try{       
-        String b = JOptionPane.showInputDialog(null,"Ingrese un almacen a conectar").toUpperCase();
-        int peso = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese el peso del camino (km)"));
-        
-        Global.getMatriz().newEdge(a, b, peso);
-        JOptionPane.showMessageDialog(null, "Se ha agregado un nuevo camino"); 
-        }
-        catch (Exception e){
-            JOptionPane.showMessageDialog(null,"Datos invalidos...");      
+
+    public void nuevaArista(String a) {
+        try {
+            String b = JOptionPane.showInputDialog(null, "Ingrese un almacen a conectar").toUpperCase();
+            int peso = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese el peso del camino (km)"));
+
+            Global.getMatriz().newEdge(a, b, peso);
+            JOptionPane.showMessageDialog(null, "Se ha agregado un nuevo camino");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Datos invalidos...");
         }
     }
 
@@ -290,7 +289,14 @@ public class Menu extends javax.swing.JFrame {
     private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
         // TODO add your handling code here:
 //        this.dispose();
-        System.exit(0);
+        int opt = JOptionPane.showConfirmDialog(null, "¿Desea guardar los cambios antes de salir?", "Seleccione una opcion", JOptionPane.YES_NO_CANCEL_OPTION);
+        if (opt == 0) {
+            Funciones fun = new Funciones();
+            fun.WriteTxt(Global.getMatriz(), archivo);
+            System.exit(0);
+        } else if (opt == 1) {
+            System.exit(0);
+        }
     }//GEN-LAST:event_jButton9MouseClicked
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -308,49 +314,49 @@ public class Menu extends javax.swing.JFrame {
         Funciones fun = new Funciones();
         Graph graph = fun.Graphic(Global.getMatriz());
         System.setProperty("org.graphstream.ui", "swing");
-        graph.display();
+
+        Viewer viewer = graph.display();
+        viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
     }//GEN-LAST:event_MostrarGrafoMouseClicked
 
     private void RealizarPedidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RealizarPedidoMouseClicked
         // TODO add your handling code here:
-        
+
         this.setVisible(false);
         VPedido vp = new VPedido(Global.getMatriz());
-        
+
     }//GEN-LAST:event_RealizarPedidoMouseClicked
 
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
         // TODO add your handling code here:
         // NUEVO CAMINO
-        try{       
-        String a = JOptionPane.showInputDialog(null,"Ingrese primer almacen").toUpperCase();
-        this.nuevaArista(a);
+        try {
+            String a = JOptionPane.showInputDialog(null, "Ingrese primer almacen").toUpperCase();
+            this.nuevaArista(a);
 //        String b = JOptionPane.showInputDialog(null,"Ingrese segundo vertice").toUpperCase();
 //        int peso = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese peso del camino (km)"));
 //        matriz.newEdge(a,b,peso);
 //        JOptionPane.showMessageDialog(null, "Se ha agregado un nuevo camino");   
-        }
-        catch (Exception e){
-            JOptionPane.showMessageDialog(null,"Datos invalidos...");      
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Datos invalidos...");
         }
     }//GEN-LAST:event_jButton7MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
-        GestionarStock gs = new GestionarStock(Global.getMatriz()); 
+        GestionarStock gs = new GestionarStock(Global.getMatriz());
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void NuevoAlmacenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NuevoAlmacenMouseClicked
         // TODO add your handling code here:
-        try{       
-        String a = JOptionPane.showInputDialog(null,"Ingrese el nombre del nuevo almacen").toUpperCase();
-        Global.getMatriz().verticeSolo(a);
-        this.nuevaArista(a);
-        this.nuevaArista(a);
-        }
-        catch (Exception e){
-            JOptionPane.showMessageDialog(null,"Datos invalidos...");      
+        try {
+            String a = JOptionPane.showInputDialog(null, "Ingrese el nombre del nuevo almacen").toUpperCase();
+            Global.getMatriz().verticeSolo(a);
+            this.nuevaArista(a);
+            this.nuevaArista(a);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Datos invalidos...");
         }
     }//GEN-LAST:event_NuevoAlmacenMouseClicked
 

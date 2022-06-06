@@ -33,7 +33,7 @@ public class VPedido extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.matriz = mat;
-        this.panel.setText(mat.dfs(mat, "A").printProductos());
+        this.panel.setText(mat.dfs(mat, matriz.verts[0].getName()).printProductos());
     }
 
     /**
@@ -194,7 +194,7 @@ public class VPedido extends javax.swing.JFrame {
                         if (Global.getMatriz().verts[i].getName().equals(a.toUpperCase())){
                             Lista data = Global.getMatriz().verts[i].getData();
                             Grafo m = fg.modificarExistencias(data, Producto, cantidadRestante, 0, Global.getMatriz());
-                            this.panel.setText(Global.getMatriz().dfs(mat, "A").printProductos());
+                            this.panel.setText(Global.getMatriz().dfs(mat, matriz.verts[0].getName()).printProductos());
                             Global.setMatriz(m);
                             Global.setPendientes(0);
                         }
@@ -205,7 +205,7 @@ public class VPedido extends javax.swing.JFrame {
 
             } else {
                 Global.setMatriz(mat);
-                this.panel.setText(matriz.dfs(matriz, "A").printProductos());
+                this.panel.setText(matriz.dfs(matriz, matriz.verts[0].getName()).printProductos());
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error, ingrese los datos nuevamente");
